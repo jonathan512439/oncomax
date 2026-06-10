@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva de cita | OncoMax</title>
+  <meta name="description" content="Formulario demostrativo de reserva de cita OncoMax.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    DOCUMENTACIÓN DE ESTA PÁGINA
+    reserva.html contiene el formulario demostrativo.
+    app.js previene el envío real, valida campos obligatorios y muestra un mensaje temporal.
+    No se guarda información, no se usa localStorage y no se conecta con servidores.
+  -->
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax"><img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico"></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button><nav class="main-nav" id="main-menu" aria-label="Menú principal"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="servicios.html">Servicios</a><a class="nav-link" href="asistencia.html">Asistencia Médica</a><a class="nav-link" href="nosotros.html">Acerca de Nosotros</a><a class="nav-link" href="oncologia.html">Oncología</a><a class="nav-link" href="lazos.html">Lazos</a></nav></div></header>
+
+  <main>
+    <section class="section page-section reservation-section">
+      <div class="section-inner reservation-grid">
+        <div>
+          <h1>Reserva de cita</h1>
+          <p>Completa este formulario demostrativo. No se guardan datos reales ni se envía información a servidores.</p>
+          <p class="notice strong">Información orientativa, no reemplaza una consulta médica profesional.</p>
+        </div>
+
+        <form class="reservation-form" id="reservation-form" novalidate>
+          <label>Nombre completo<input type="text" name="nombre" autocomplete="name" required></label>
+          <label>Teléfono / WhatsApp<input type="tel" name="telefono" autocomplete="tel" required></label>
+          <label>Servicio de interés<select name="servicio" required><option value="">Selecciona un servicio</option><option>Oncólogo pediátrico</option><option>Oncólogo quirúrgico</option><option>Acompañamiento integral</option><option>Asistencia domiciliaria</option></select></label>
+          <label>Fecha preferida<input type="date" name="fecha" required></label>
+          <label class="full-field">Mensaje adicional<textarea name="mensaje" rows="4" placeholder="Escribe una consulta general, sin datos médicos sensibles."></textarea></label>
+          <button class="btn btn-primary full-field" type="submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

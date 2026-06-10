@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de Nosotros | OncoMax</title>
+  <meta name="description" content="Equipo humano demostrativo de OncoMax.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    DOCUMENTACIÓN DE ESTA PÁGINA
+    nosotros.html contiene información institucional y equipo demostrativo.
+    Los videos son placeholders; app.js lee data-alert para avisar que se insertarán desde YouTube.
+  -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax"><img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico"></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button>
+      <nav class="main-nav" id="main-menu" aria-label="Menú principal"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="servicios.html">Servicios</a><a class="nav-link" href="asistencia.html">Asistencia Médica</a><a class="nav-link active" href="nosotros.html">Acerca de Nosotros</a><a class="nav-link" href="oncologia.html">Oncología</a><a class="nav-link" href="lazos.html">Lazos</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-section">
+      <div class="section-inner">
+        <div class="section-heading"><h1>Acerca de Nosotros</h1><p>Conoce al equipo humano que acompaña a nuestros pacientes con compromiso, respeto y vocación de servicio.</p></div>
+
+        <div class="team-block">
+          <h2>Enfermeras</h2>
+          <div class="card-grid four-columns">
+            <article class="team-card"><div class="portrait-placeholder small">MR</div><h3>Margarita Rodríguez</h3><p>Cuenta con experiencia en cuidado y acompañamiento de pacientes, especialmente en apoyo al área de oncología infantil.</p></article>
+            <article class="team-card"><div class="portrait-placeholder small">CQ</div><h3>Carmen Quique</h3><p>Profesional de enfermería con experiencia en atención al paciente, apoyo en tratamientos y seguimiento de cuidados médicos.</p></article>
+            <article class="team-card"><div class="portrait-placeholder small">SR</div><h3>Sofía Ramos</h3><p>Enfermera dedicada al acompañamiento diario del paciente, control básico, orientación y apoyo durante el tratamiento.</p></article>
+            <article class="team-card"><div class="portrait-placeholder small">EG</div><h3>Elizabeth Gutiérrez</h3><p>Profesional enfocada en el cuidado humano, atención infantil y asistencia en procesos de recuperación.</p></article>
+          </div>
+        </div>
+
+        <div class="team-block">
+          <h2>Doctores</h2>
+          <div class="card-grid two-columns">
+            <article class="team-card horizontal"><div class="portrait-placeholder small">AR</div><div><h3>Dr. Abdon Rhenis</h3><p>Médico especializado en atención oncológica, evaluación clínica y acompañamiento en procesos de tratamiento.</p></div></article>
+            <article class="team-card horizontal"><div class="portrait-placeholder small">EL</div><div><h3>Dr. Erik Lozano</h3><p>Médico con enfoque en seguimiento de pacientes, orientación clínica y coordinación de atención integral.</p></div></article>
+          </div>
+        </div>
+
+        <p class="notice">Estos datos son demostrativos hasta que se confirme información real. No incluyen certificaciones, universidades, hospitales ni credenciales oficiales.</p>
+
+        <div class="card-grid two-columns">
+          <button class="video-card" type="button" data-alert="Aquí se insertará el video correspondiente desde YouTube."><span class="video-frame compact"><span class="play-icon" aria-hidden="true"></span></span><span class="video-text"><strong>Historia de la clínica</strong><small>Video explicativo sobre el origen, propósito y atención de OncoMax.</small></span></button>
+          <button class="video-card" type="button" data-alert="Aquí se insertará el video correspondiente desde YouTube."><span class="video-frame compact"><span class="play-icon" aria-hidden="true"></span></span><span class="video-text"><strong>Ubicación y fundadores</strong><small>Video sobre cómo llegar a la clínica y una breve presentación de sus fundadores.</small></span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

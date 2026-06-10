@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oncología | OncoMax</title>
+  <meta name="description" content="Información educativa sobre oncología.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    DOCUMENTACIÓN DE ESTA PÁGINA
+    oncologia.html contiene información educativa general.
+    El botón Solicitar orientación abre asistencia.html, porque esa sección vive en otra página del router.
+  -->
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax"><img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico"></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button><nav class="main-nav" id="main-menu" aria-label="Menú principal"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="servicios.html">Servicios</a><a class="nav-link" href="asistencia.html">Asistencia Médica</a><a class="nav-link" href="nosotros.html">Acerca de Nosotros</a><a class="nav-link active" href="oncologia.html">Oncología</a><a class="nav-link" href="lazos.html">Lazos</a></nav></div></header>
+
+  <main>
+    <section class="section page-section soft-section">
+      <div class="section-inner">
+        <div class="section-heading"><h1>El mundo de la oncología</h1></div>
+        <div class="info-layout">
+          <article class="info-card"><h2>¿Qué es la oncología?</h2><p>La oncología es la rama de la medicina encargada de estudiar, prevenir, diagnosticar y tratar enfermedades relacionadas con tumores y distintos tipos de cáncer. Los especialistas en esta área se llaman oncólogos.</p></article>
+          <article class="info-card"><h2>¿Cómo se detecta?</h2><p>La oncología ayuda a detectar enfermedades mediante controles médicos, análisis de sangre, biopsias, radiografías, ecografías, tomografías y otros estudios especializados, según los síntomas y el tipo de enfermedad. La detección temprana puede ayudar a mejorar el tratamiento y la recuperación.</p></article>
+          <article class="info-card highlight-card"><h2>Importancia de la detección temprana</h2><p>La atención temprana permite orientar al paciente, realizar estudios adecuados y definir un tratamiento oportuno según la evaluación médica profesional.</p><p class="notice strong">Esta información es orientativa y no reemplaza una consulta médica profesional.</p><a class="btn btn-primary" href="asistencia.html">Solicitar orientación</a></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

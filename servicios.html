@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios | OncoMax</title>
+  <meta name="description" content="Servicios demostrativos de OncoMax.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    DOCUMENTACIÓN DE ESTA PÁGINA
+    servicios.html es una subpágina del router HTML.
+    El menú superior enlaza a otros archivos; los botones de reserva llevan a reserva.html.
+    Los botones con data-alert son demostrativos y app.js muestra un aviso temporal.
+  -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax">
+        <img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button>
+      <nav class="main-nav" id="main-menu" aria-label="Menú principal">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link active" href="servicios.html">Servicios</a>
+        <a class="nav-link" href="asistencia.html">Asistencia Médica</a>
+        <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
+        <a class="nav-link" href="oncologia.html">Oncología</a>
+        <a class="nav-link" href="lazos.html">Lazos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-section">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h1>Servicios</h1>
+          <p>Atención médica y acompañamiento integral para pacientes y familias.</p>
+        </div>
+
+        <div class="card-grid three-columns">
+          <article class="service-card">
+            <div class="image-placeholder" role="img" aria-label="Imagen referencial de oncología pediátrica">Pediatría</div>
+            <div class="card-body">
+              <h2>Oncólogo pediátrico</h2>
+              <p>Atención especializada para niños y adolescentes con sospecha o diagnóstico de cáncer. Incluye orientación, evaluación inicial, seguimiento y acompañamiento familiar.</p>
+              <div class="button-row">
+                <button class="btn btn-small btn-secondary" type="button" data-alert="La asistencia domiciliaria se confirmará por WhatsApp en la siguiente etapa.">Asistencia domiciliaria</button>
+                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="image-placeholder" role="img" aria-label="Imagen referencial de oncología quirúrgica">Cirugía</div>
+            <div class="card-body">
+              <h2>Oncólogo quirúrgico</h2>
+              <p>Evaluación y tratamiento quirúrgico de tumores. Apoya en la planificación de cirugías, extracción de lesiones y coordinación con el equipo médico.</p>
+              <div class="button-row">
+                <button class="btn btn-small btn-secondary" type="button" data-alert="La asistencia domiciliaria se confirmará por WhatsApp en la siguiente etapa.">Asistencia domiciliaria</button>
+                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="image-placeholder" role="img" aria-label="Imagen referencial de acompañamiento integral">Apoyo</div>
+            <div class="card-body">
+              <h2>Acompañamiento integral</h2>
+              <p>Apoyo médico, emocional y familiar durante el proceso de diagnóstico, tratamiento y recuperación del paciente.</p>
+              <div class="button-row">
+                <button class="btn btn-small btn-secondary" type="button" data-alert="Aquí se mostrará más información del servicio.">Ver información</button>
+                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
