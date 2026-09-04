@@ -1,87 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Configuracion de la pagina. -->
   <meta charset="UTF-8">
+  <!-- Permite tildes y ñ. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que funcione bien en celular. -->
   <title>Servicios | OncoMax</title>
-  <meta name="description" content="Servicios demostrativos de OncoMax.">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Nombre de la pestaña. -->
+  <style>
+    /* Estilos simples escritos dentro del mismo HTML para que el estudiante vea todo junto. */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FAFAFC;
+      color: #211926;
+      line-height: 1.5;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #E6E1EC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      width: 260px;
+      height: 70px;
+      object-fit: cover;
+      object-position: center;
+    }
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #743795;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover,
+    .activo {
+      background: #F3EBF6;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+    h1 {
+      color: #743795;
+      font-size: 42px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .boton {
+      display: inline-block;
+      background: #743795;
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid #E6E1EC;
+      padding: 22px;
+      margin-top: 30px;
+      color: #6A6170;
+    }
+    footer b {
+      color: #743795;
+    }
+    .footer-redes img {
+      width: 24px;
+      height: 24px;
+      margin: 6px;
+    }
+    /* Este segmento define estilos para pantallas pequeñas */
+    @media(max-width:700px) {
+      .logo {
+        width: 210px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    DOCUMENTACIÓN DE ESTA PÁGINA
-    servicios.html es una subpágina del router HTML.
-    El menú superior enlaza a otros archivos; los botones de reserva llevan a reserva.html.
-    Los botones con data-alert son demostrativos y app.js muestra un aviso temporal.
-  -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax">
-        <img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico">
-      </a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button>
-      <nav class="main-nav" id="main-menu" aria-label="Menú principal">
-        <a class="nav-link" href="index.html">Inicio</a>
-        <a class="nav-link active" href="servicios.html">Servicios</a>
-        <a class="nav-link" href="asistencia.html">Asistencia Médica</a>
-        <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
-        <a class="nav-link" href="oncologia.html">Oncología</a>
-        <a class="nav-link" href="lazos.html">Lazos</a>
-      </nav>
-    </div>
+  <!-- Menu superior. -->
+  <header>
+    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a class="activo" href="servicios.html">Servicios</a>
+      <a href="asistencia.html">Asistencia Medica</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="oncologia.html">Oncologia</a>
+      <a href="index.html">Reserva</a>
+    </nav>
   </header>
 
   <main>
-    <section class="section page-section">
-      <div class="section-inner">
-        <div class="section-heading">
-          <h1>Servicios</h1>
-          <p>Atención médica y acompañamiento integral para pacientes y familias.</p>
-        </div>
+    <!-- Titulo de la pagina. -->
+    <h1>Servicios</h1>
+    <p>Atencion medica y acompañamiento integral para pacientes y familias.</p>
 
-        <div class="card-grid three-columns">
-          <article class="service-card">
-            <div class="image-placeholder" role="img" aria-label="Imagen referencial de oncología pediátrica">Pediatría</div>
-            <div class="card-body">
-              <h2>Oncólogo pediátrico</h2>
-              <p>Atención especializada para niños y adolescentes con sospecha o diagnóstico de cáncer. Incluye orientación, evaluación inicial, seguimiento y acompañamiento familiar.</p>
-              <div class="button-row">
-                <button class="btn btn-small btn-secondary" type="button" data-alert="La asistencia domiciliaria se confirmará por WhatsApp en la siguiente etapa.">Asistencia domiciliaria</button>
-                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
-              </div>
-            </div>
-          </article>
+    <section class="grid">
+      <!-- Cada article es un servicio. Cambia las imagenes por archivos reales con estos nombres. -->
+      <article class="card">
+        <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
+        <h2>Oncologo pediatrico</h2>
+        <p>Atencion especializada para niños y adolescentes con sospecha o diagnostico de cancer.</p>
+        <a class="boton" href="index.html">Reservar consulta</a>
+      </article>
 
-          <article class="service-card">
-            <div class="image-placeholder" role="img" aria-label="Imagen referencial de oncología quirúrgica">Cirugía</div>
-            <div class="card-body">
-              <h2>Oncólogo quirúrgico</h2>
-              <p>Evaluación y tratamiento quirúrgico de tumores. Apoya en la planificación de cirugías, extracción de lesiones y coordinación con el equipo médico.</p>
-              <div class="button-row">
-                <button class="btn btn-small btn-secondary" type="button" data-alert="La asistencia domiciliaria se confirmará por WhatsApp en la siguiente etapa.">Asistencia domiciliaria</button>
-                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
-              </div>
-            </div>
-          </article>
+      <article class="card">
+        <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
+        <h2>Oncologo quirurgico</h2>
+        <p>Evaluacion y tratamiento quirurgico de tumores, con coordinacion del equipo medico.</p>
+        <a class="boton" href="index.html">Reservar consulta</a>
+      </article>
 
-          <article class="service-card">
-            <div class="image-placeholder" role="img" aria-label="Imagen referencial de acompañamiento integral">Apoyo</div>
-            <div class="card-body">
-              <h2>Acompañamiento integral</h2>
-              <p>Apoyo médico, emocional y familiar durante el proceso de diagnóstico, tratamiento y recuperación del paciente.</p>
-              <div class="button-row">
-                <button class="btn btn-small btn-secondary" type="button" data-alert="Aquí se mostrará más información del servicio.">Ver información</button>
-                <a class="btn btn-small btn-primary" href="reserva.html">Reserva de consulta</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
+      <article class="card">
+        <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
+        <h2>Acompañamiento integral</h2>
+        <p>Apoyo medico, emocional y familiar durante diagnostico, tratamiento y recuperacion.</p>
+        <a class="boton" href="index.html">Reservar consulta</a>
+      </article>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.js"></script>
+  <footer>
+    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
+    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
+    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
+    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
+    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
+    <div class="footer-redes">
+      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+    </div>
+  </footer>
 </body>
 </html>

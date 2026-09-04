@@ -1,35 +1,155 @@
 <!DOCTYPE html>
+<!-- Archivo HTML de la pagina Oncologia. -->
 <html lang="es">
+<!-- Idioma español. -->
 <head>
+  <!-- Configuracion basica. -->
   <meta charset="UTF-8">
+  <!-- Tildes y ñ. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oncología | OncoMax</title>
-  <meta name="description" content="Información educativa sobre oncología.">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Responsivo. -->
+  <title>Oncologia | OncoMax</title>
+  <!-- Titulo de pestaña. -->
+  <style>
+    /* Estilo sencillo para esta pagina. */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FAFAFC;
+      color: #211926;
+      line-height: 1.5;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #E6E1EC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      width: 260px;
+      height: 70px;
+      object-fit: cover;
+      object-position: center;
+    }
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #743795;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover,
+    .activo {
+      background: #F3EBF6;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+    h1 {
+      color: #743795;
+      font-size: 42px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+    .aviso {
+      background: #F3EBF6;
+      border-left: 4px solid #743795;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .boton {
+      display: inline-block;
+      background: #743795;
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid #E6E1EC;
+      padding: 22px;
+      margin-top: 30px;
+      color: #6A6170;
+    }
+    footer b {
+      color: #743795;
+    }
+    .footer-redes img {
+      width: 24px;
+      height: 24px;
+      margin: 6px;
+    }
+    @media(max-width:700px) {
+      .logo {
+        width: 210px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    DOCUMENTACIÓN DE ESTA PÁGINA
-    oncologia.html contiene información educativa general.
-    El botón Solicitar orientación abre asistencia.html, porque esa sección vive en otra página del router.
-  -->
-  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax"><img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico"></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button><nav class="main-nav" id="main-menu" aria-label="Menú principal"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="servicios.html">Servicios</a><a class="nav-link" href="asistencia.html">Asistencia Médica</a><a class="nav-link" href="nosotros.html">Acerca de Nosotros</a><a class="nav-link active" href="oncologia.html">Oncología</a><a class="nav-link" href="lazos.html">Lazos</a></nav></div></header>
+  <!-- Menu superior. -->
+  <header>
+    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="asistencia.html">Asistencia Medica</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a class="activo" href="oncologia.html">Oncologia</a>
+      <a href="index.html">Reserva</a>
+    </nav>
+  </header>
 
   <main>
-    <section class="section page-section soft-section">
-      <div class="section-inner">
-        <div class="section-heading"><h1>El mundo de la oncología</h1></div>
-        <div class="info-layout">
-          <article class="info-card"><h2>¿Qué es la oncología?</h2><p>La oncología es la rama de la medicina encargada de estudiar, prevenir, diagnosticar y tratar enfermedades relacionadas con tumores y distintos tipos de cáncer. Los especialistas en esta área se llaman oncólogos.</p></article>
-          <article class="info-card"><h2>¿Cómo se detecta?</h2><p>La oncología ayuda a detectar enfermedades mediante controles médicos, análisis de sangre, biopsias, radiografías, ecografías, tomografías y otros estudios especializados, según los síntomas y el tipo de enfermedad. La detección temprana puede ayudar a mejorar el tratamiento y la recuperación.</p></article>
-          <article class="info-card highlight-card"><h2>Importancia de la detección temprana</h2><p>La atención temprana permite orientar al paciente, realizar estudios adecuados y definir un tratamiento oportuno según la evaluación médica profesional.</p><p class="notice strong">Esta información es orientativa y no reemplaza una consulta médica profesional.</p><a class="btn btn-primary" href="asistencia.html">Solicitar orientación</a></article>
-        </div>
-      </div>
+    <h1>El mundo de la oncologia</h1>
+
+    <section class="card">
+      <h2>¿Que es la oncologia?</h2>
+      <p>La oncologia es la rama de la medicina encargada de estudiar, prevenir, diagnosticar y tratar enfermedades relacionadas con tumores y cancer.</p>
+    </section>
+
+    <section class="card">
+      <h2>¿Como se detecta?</h2>
+      <p>Se puede detectar con controles medicos, analisis de sangre, biopsias, radiografias, ecografias, tomografias y otros estudios segun cada caso.</p>
+    </section>
+
+    <section class="card">
+      <h2>Importancia de la deteccion temprana</h2>
+      <p>La atencion temprana permite orientar al paciente y definir un tratamiento oportuno segun la evaluacion profesional.</p>
+      <a class="boton" href="asistencia.html">Solicitar orientacion</a>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.js"></script>
+  <footer>
+    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
+    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
+    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
+    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
+    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
+    <div class="footer-redes">
+      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+    </div>
+  </footer>
 </body>
 </html>

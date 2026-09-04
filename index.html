@@ -1,139 +1,217 @@
 <!DOCTYPE html>
+<!-- Esta linea le dice al navegador que el documento usa HTML5. -->
 <html lang="es">
+<!-- lang="es" indica que la pagina esta en español. -->
 <head>
+  <!-- head guarda datos que el navegador necesita, pero que casi no se ven en pantalla. -->
   <meta charset="UTF-8">
+  <!-- UTF-8 permite usar tildes y ñ sin problemas. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OncoMax | Menú principal</title>
-  <meta name="description" content="Menú principal OncoMax.">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- viewport hace que el sitio se adapte mejor al celular. -->
+  <title>OncoMax | Inicio</title>
+  <!-- title es el texto que aparece en la pestaña del navegador. -->
+  <style>
+    /* Estos son colores basicos del proyecto. Se repiten poco para que sea facil entenderlos. */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FAFAFC;
+      color: #211926;
+      line-height: 1.5;
+    }
+    /* El body es toda la pagina: quitamos margen, ponemos fuente y color de fondo. */
+    header {
+      background: white;
+      border-bottom: 1px solid #E6E1EC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    /* El header es la barra de arriba: logo a un lado y menu al otro. */
+    .logo {
+      width: 260px;
+      height: 70px;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* El logo se recorta un poquito para verse grande, porque la imagen original tiene mucho espacio blanco. */
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #743795;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    /* Cada enlace del menu parece un boton sencillo. */
+    nav a:hover,
+    .activo {
+      background: #F3EBF6;
+    }
+    /* Esto marca el enlace activo y tambien cuando pasamos el mouse. */
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+      text-align: center;
+    }
+    /* main centra el contenido principal y le da aire. */
+    h1 {
+      font-size: 52px;
+      margin: 10px 0;
+      color: #743795;
+    }
+    /* h1 es el titulo mas importante. */
+    h2 {
+      margin: 5px 0;
+      color: #6A6170;
+    }
+    /* h2 se usa como subtitulo. */
+    .frase {
+      font-weight: bold;
+      color: #743795;
+    }
+    /* Clase para resaltar una frase importante. */
+    .video {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      margin: 25px 0;
+      background: #211926;
+    }
+    /* El video mantiene formato 16:9, que es el formato normal de muchos videos. */
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+      text-align: left;
+    }
+    /* La clase menu acomoda las tarjetas en tres columnas. */
+    .card {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 16px;
+      padding: 18px;
+      text-decoration: none;
+      color: #211926;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+    /* Cada card es un acceso a otra pagina. */
+    .card b {
+      color: #743795;
+    }
+    /* El titulo dentro de cada tarjeta va en morado. */
+    .redes img {
+      width: 38px;
+      height: 38px;
+      margin: 12px;
+    }
+    /* Iconos de redes sociales. */
+    footer {
+      background: white;
+      border-top: 1px solid #E6E1EC;
+      text-align: center;
+      padding: 22px;
+      margin-top: 30px;
+      color: #6A6170;
+    }
+    /* Footer es el pie de pagina. */
+    footer b {
+      color: #743795;
+    }
+    /* El nombre del centro en el footer queda un poco mas visible. */
+    .footer-redes img {
+      width: 24px;
+      height: 24px;
+      margin: 6px;
+    }
+    /* Iconos pequeñitos del footer. */
+    @media(max-width:700px) {
+      .logo {
+        width: 210px;
+      }
+      .menu {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 38px;
+      }
+    }
+    /* En celular todo pasa a una columna para que no se apriete. */
+  </style>
 </head>
 <body>
-  <!--
-    DOCUMENTACIÓN DE ESTA PÁGINA
-    index.html funciona como el MENÚ PRINCIPAL del sitio.
-    Ya no contiene todas las secciones juntas: cada opción del menú abre un archivo HTML distinto.
-    Este enfoque simula un router básico usando enlaces normales, ideal para HTML, CSS y JavaScript puro.
-  -->
-  <header class="site-header">
-    <div class="header-inner">
-      <!-- Marca del sitio: al hacer clic vuelve siempre al menú principal. -->
-      <a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax">
-        <img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico">
-      </a>
-
-      <!-- Botón hamburguesa: app.js lo usa para abrir y cerrar el menú en celular. -->
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <!-- Navegación principal: cada enlace apunta a un archivo HTML independiente. -->
-      <nav class="main-nav" id="main-menu" aria-label="Menú principal">
-        <a class="nav-link active" href="index.html">Inicio</a>
-        <a class="nav-link" href="servicios.html">Servicios</a>
-        <a class="nav-link" href="asistencia.html">Asistencia Médica</a>
-        <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
-        <a class="nav-link" href="oncologia.html">Oncología</a>
-        <a class="nav-link" href="lazos.html">Lazos</a>
-      </nav>
-    </div>
+  <!-- body contiene todo lo que si se ve en la pagina. -->
+  <header>
+    <!-- header es el menu superior. -->
+    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+    <!-- Esta opcion lleva al inicio cuando se hace clic en el logo. -->
+    <nav>
+      <!-- nav contiene los enlaces del menu. Cada archivo.html te lleva a esa pagina. -->
+      <a class="activo" href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="asistencia.html">Asistencia Medica</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="oncologia.html">Oncologia</a>
+      <a href="index.html">Reserva</a>
+    </nav>
   </header>
 
   <main>
-    <!--
-      Pantalla principal:
-      El video institucional queda centrado como elemento principal del menú.
-      Por ahora es un placeholder; cuando exista un enlace real de YouTube se puede reemplazar por un iframe.
-    -->
-    <section class="home-menu section">
-      <div class="section-inner home-layout">
-        <div class="home-intro">
-          <p class="institutional">Tu lucha es nuestra lucha, cuidamos de ti con el corazón.</p>
-          <h1>OncoMax</h1>
-          <h2>Centro Médico Integral Oncológico</h2>
-          <p class="lead">En OncoMax brindamos orientación, asistencia médica y acompañamiento humano para pacientes y familias durante el proceso oncológico.</p>
-        </div>
+    <!-- main guarda el contenido principal de esta pagina. -->
+    <p class="frase">Tu lucha es nuestra lucha, cuidamos de ti con el corazon.</p>
+    <!-- Esta es la frase institucional. -->
+    <h1>OncoMax</h1>
+    <!-- Titulo principal del proyecto. -->
+    <h2>Centro Medico Integral Oncologico</h2>
+    <!-- Subtitulo que explica que es OncoMax. -->
+    <p>En OncoMax brindamos orientacion, asistencia medica y acompañamiento humano para pacientes y familias.</p>
+    <!-- Texto corto de presentacion. -->
 
-        <button class="video-card main-video" link="#" aria-label="Ver video institucional de OncoMax"  >
-          <span class="video-frame">
-            <span class="play-icon" aria-hidden="true"></span>
-          </span>
-          <span class="video-text">
-            <strong>Video institucional OncoMax</strong>
-            <small>Próximamente se insertará un video de presentación desde YouTube.</small>
-          </span>
-        </button>
-
-        <!-- Accesos tipo bloques: simulan las opciones del boceto principal. -->
-        <div class="menu-card-grid" aria-label="Accesos del menú principal">
-          <a class="menu-card" href="servicios.html">
-            <strong>Servicios</strong>
-            <span>Atención médica y acompañamiento integral.</span>
-          </a>
-          <a class="menu-card" href="asistencia.html">
-            <strong>Asistencia Médica</strong>
-            <span>Especialistas y asistencia domiciliaria.</span>
-          </a>
-          <a class="menu-card" href="nosotros.html">
-            <strong>Acerca de Nosotros</strong>
-            <span>Equipo humano y videos institucionales.</span>
-          </a>
-          <a class="menu-card" href="oncologia.html">
-            <strong>Oncología</strong>
-            <span>Información educativa y responsable.</span>
-          </a>
-          <a class="menu-card" href="lazos.html">
-            <strong>Lazos</strong>
-            <span>Comunidad, apoyo familiar y emocional.</span>
-          </a>
-          <a class="menu-card accent-card" href="reserva.html">
-            <strong>Reservar cita</strong>
-            <span>Formulario demostrativo sin envío real.</span>
-          </a>
-        </div>
-
-        <!-- Logos sociales oficiales en SVG local, sin librerías externas. -->
-        <div class="social-row social-icons" aria-label="Redes sociales">
-          <a href="#" aria-label="TikTok" title="TikTok">
-            <img src="assets/icons/tiktok.svg" alt="">
-          </a>
-          <a href="#" aria-label="Instagram" title="Instagram">
-            <img src="assets/icons/instagram.svg" alt="">
-          </a>
-          <a href="#" aria-label="WhatsApp" title="WhatsApp">
-            <img src="assets/icons/whatsapp.svg" alt="">
-          </a>
-          <a href="#" aria-label="Facebook" title="Facebook">
-            <img src="assets/icons/facebook.svg" alt="">
-          </a>
-        </div>
-      </div>
+    <!-- El video ahora es local, o sea que esta guardado dentro de la carpeta del proyecto. -->
+    <video class="video" controls>
+      <!-- source indica donde esta el archivo del video. Pon tu video con este nombre exacto. -->
+      <source src="assets/videos/video-inicio.mp4" type="video/mp4">
+      <!-- Este texto aparece si el navegador no puede reproducir el video. -->
+      Tu navegador no puede reproducir este video.
+    </video>
+    <section class="menu">
+      <!-- Esta seccion muestra accesos a las demas paginas. -->
+      <a class="card" href="servicios.html"><b>Servicios</b><br>Atencion y acompañamiento integral.</a>
+      <a class="card" href="asistencia.html"><b>Asistencia Medica</b><br>Especialistas y apoyo domiciliario.</a>
+      <a class="card" href="nosotros.html"><b>Nosotros</b><br>Equipo de OncoMax.</a>
+      <a class="card" href="oncologia.html"><b>Oncologia</b><br>Informacion educativa basica.</a>
+      <a class="card" href="index.html"><b>Reservar cita</b><br>Formulario de Reserva.</a>
     </section>
+
+    <div class="redes">
+      <!-- Estos iconos usan archivos SVG guardados en assets/icons. Son los logos de las redes sociales. -->
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <h2>OncoMax</h2>
-        <p>Centro Médico Integral Oncológico</p>
-        <p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p>
-      </div>
-      <address>
-        <strong>WhatsApp:</strong> +591 XXX XXX XX<br>
-        <strong>Dirección:</strong> Dirección pendiente de confirmación<br>
-        <strong>Horario:</strong> Lunes a viernes, horario pendiente
-      </address>
-      <div class="footer-social footer-icons" aria-label="Redes sociales">
-        <a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a>
-        <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a>
-        <a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a>
-        <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a>
-      </div>
+  <footer>
+    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
+    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
+    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
+    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
+    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
+    <div class="footer-redes">
+      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
     </div>
   </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,61 +1,267 @@
 <!DOCTYPE html>
+<!-- Documento HTML basico. -->
 <html lang="es">
+<!-- El sitio esta en español. -->
 <head>
+  <!-- Informacion interna para el navegador. -->
   <meta charset="UTF-8">
+  <!-- Permite escribir con tildes. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acerca de Nosotros | OncoMax</title>
-  <meta name="description" content="Equipo humano demostrativo de OncoMax.">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Hace que la pagina sea responsiva. -->
+  <title>Nosotros | OncoMax</title>
+  <!-- Titulo visible en la pestaña. -->
+  <style>
+    /* Estilo simple, todo dentro del mismo archivo. */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FAFAFC;
+      color: #211926;
+      line-height: 1.5;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #E6E1EC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      width: 260px;
+      height: 70px;
+      object-fit: cover;
+      object-position: center;
+    }
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #743795;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover,
+    .activo {
+      background: #F3EBF6;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+    h1 {
+      color: #743795;
+      font-size: 42px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .video {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 12px;
+    }
+    /* Esta clase crea una tarjeta especial que puede girar. */
+    .tarjeta-giratoria {
+      height: 340px;
+      perspective: 1000px;
+    }
+    /* perspective da profundidad, como si la tarjeta estuviera en 3D. */
+    .tarjeta-contenido {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+    }
+    /* Esta parte es la que realmente gira cuando pasamos el mouse encima. */
+    .tarjeta-giratoria:hover .tarjeta-contenido {
+      transform: rotateY(180deg);
+    }
+    /* Frente y reverso son las dos caras de la tarjeta. */
+    .tarjeta-frente,
+    .tarjeta-atras {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      backface-visibility: hidden;
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      box-sizing: border-box;
+    }
+    /* La cara del frente muestra la foto y el nombre del doctor. */
+    .tarjeta-frente img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    /* La cara de atras empieza girada, por eso aparece cuando toda la tarjeta rota. */
+    .tarjeta-atras {
+      transform: rotateY(180deg);
+      overflow: auto;
+    }
+    /* Este texto ayuda a que el alumno explique que hay que pasar el mouse. */
+    .ayuda {
+      color: #6A6170;
+      font-size: 14px;
+    }
+    .aviso {
+      background: #F3EBF6;
+      border-left: 4px solid #743795;
+      padding: 12px;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid #E6E1EC;
+      padding: 22px;
+      margin-top: 30px;
+      color: #6A6170;
+    }
+    footer b {
+      color: #743795;
+    }
+    .footer-redes img {
+      width: 24px;
+      height: 24px;
+      margin: 6px;
+    }
+    @media(max-width:700px) {
+      .logo {
+        width: 210px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .video {
+        height: 220px;
+      }
+      .tarjeta-giratoria {
+        height: 360px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    DOCUMENTACIÓN DE ESTA PÁGINA
-    nosotros.html contiene información institucional y equipo demostrativo.
-    Los videos son placeholders; app.js lee data-alert para avisar que se insertarán desde YouTube.
-  -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Ir al menú principal de OncoMax"><img class="brand-logo" src="assets/img/logo-oncomax.png" alt="OncoMax - Centro Médico Integral Oncológico"></a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu"><span></span><span></span><span></span></button>
-      <nav class="main-nav" id="main-menu" aria-label="Menú principal"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="servicios.html">Servicios</a><a class="nav-link" href="asistencia.html">Asistencia Médica</a><a class="nav-link active" href="nosotros.html">Acerca de Nosotros</a><a class="nav-link" href="oncologia.html">Oncología</a><a class="nav-link" href="lazos.html">Lazos</a></nav>
-    </div>
+  <!-- Menu de navegacion. -->
+  <header>
+    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="asistencia.html">Asistencia Medica</a>
+      <a class="activo" href="nosotros.html">Nosotros</a>
+      <a href="oncologia.html">Oncologia</a>
+      <a href="index.html">Reserva</a>
+    </nav>
   </header>
 
   <main>
-    <section class="section page-section">
-      <div class="section-inner">
-        <div class="section-heading"><h1>Acerca de Nosotros</h1><p>Conoce al equipo humano que acompaña a nuestros pacientes con compromiso, respeto y vocación de servicio.</p></div>
+    <h1>Acerca de Nosotros</h1>
+    <p>Conoce al equipo humano que acompaña a nuestros pacientes.</p>
 
-        <div class="team-block">
-          <h2>Enfermeras</h2>
-          <div class="card-grid four-columns">
-            <article class="team-card"><div class="portrait-placeholder small">MR</div><h3>Margarita Rodríguez</h3><p>Cuenta con experiencia en cuidado y acompañamiento de pacientes, especialmente en apoyo al área de oncología infantil.</p></article>
-            <article class="team-card"><div class="portrait-placeholder small">CQ</div><h3>Carmen Quique</h3><p>Profesional de enfermería con experiencia en atención al paciente, apoyo en tratamientos y seguimiento de cuidados médicos.</p></article>
-            <article class="team-card"><div class="portrait-placeholder small">SR</div><h3>Sofía Ramos</h3><p>Enfermera dedicada al acompañamiento diario del paciente, control básico, orientación y apoyo durante el tratamiento.</p></article>
-            <article class="team-card"><div class="portrait-placeholder small">EG</div><h3>Elizabeth Gutiérrez</h3><p>Profesional enfocada en el cuidado humano, atención infantil y asistencia en procesos de recuperación.</p></article>
+    <h2>Enfermeras</h2>
+    <section class="grid">
+      <article class="card"><img src="assets/img/enfermera-margarita.jpg" alt="Margarita Rodriguez"><h3>Margarita Rodriguez</h3><p>Experiencia en cuidado y acompañamiento de pacientes.</p></article>
+      <article class="card"><img src="assets/img/enfermera-carmen.jpg" alt="Carmen Quique"><h3>Carmen Quique</h3><p>Apoyo en tratamientos y seguimiento de cuidados medicos.</p></article>
+      <article class="card"><img src="assets/img/enfermera-sofia.jpg" alt="Sofia Ramos"><h3>Sofia Ramos</h3><p>Acompañamiento diario, control basico y orientacion.</p></article>
+    </section>
+
+    <h2>Doctores</h2>
+    <!-- Este texto explica al usuario como ver la informacion oculta. -->
+    <p class="ayuda">Pasa el mouse sobre la tarjeta del doctor para ver su informacion.</p>
+    <section class="grid">
+      <!-- Primera tarjeta giratoria de ejemplo. -->
+      <article class="tarjeta-giratoria">
+        <!-- tarjeta-contenido es la caja que gira completa. -->
+        <div class="tarjeta-contenido">
+          <!-- Frente de la tarjeta: aqui se ve primero la foto y el nombre. -->
+          <div class="tarjeta-frente">
+            <img src="assets/img/doctor-roberto.jpg" alt="Dr. Roberto Vargas">
+            <h3>Dr. Roberto Vargas</h3>
+            <p class="ayuda">Ver biografia</p>
+          </div>
+          <!-- Parte de atras: aparece cuando la tarjeta gira. -->
+          <div class="tarjeta-atras">
+            <h3>Dr. Roberto Vargas</h3>
+            <p><b>Especialidad:</b> Oncologia medica.</p>
+            <p><b>Historia:</b> Medico demostrativo de la clinica OncoMax, enfocado en orientar a pacientes y familias durante el proceso de atencion.</p>
+            <p><b>Enfoque:</b> Explicar los pasos del tratamiento con palabras claras y acompañar con respeto.</p>
           </div>
         </div>
+      </article>
 
-        <div class="team-block">
-          <h2>Doctores</h2>
-          <div class="card-grid two-columns">
-            <article class="team-card horizontal"><div class="portrait-placeholder small">AR</div><div><h3>Dr. Abdon Rhenis</h3><p>Médico especializado en atención oncológica, evaluación clínica y acompañamiento en procesos de tratamiento.</p></div></article>
-            <article class="team-card horizontal"><div class="portrait-placeholder small">EL</div><div><h3>Dr. Erik Lozano</h3><p>Médico con enfoque en seguimiento de pacientes, orientación clínica y coordinación de atención integral.</p></div></article>
+      <!-- Segunda tarjeta giratoria de ejemplo. -->
+      <article class="tarjeta-giratoria">
+        <!-- Esta caja interna permite separar el frente y la parte de atras. -->
+        <div class="tarjeta-contenido">
+          <!-- Cara visible al inicio. -->
+          <div class="tarjeta-frente">
+            <img src="assets/img/doctora-carla.jpg" alt="Dra. Carla Mendoza">
+            <h3>Dra. Carla Mendoza</h3>
+            <p class="ayuda">Ver biografia</p>
+          </div>
+          <!-- Cara que aparece con el giro. -->
+          <div class="tarjeta-atras">
+            <h3>Dra. Carla Mendoza</h3>
+            <p><b>Especialidad:</b> Oncologia pediatrica.</p>
+            <p><b>Historia:</b> Profesional demostrativa dedicada al acompañamiento de niños, adolescentes y sus familias.</p>
+            <p><b>Enfoque:</b> Atencion humana, comunicacion sencilla y apoyo durante controles medicos.</p>
           </div>
         </div>
+      </article>
 
-        <p class="notice">Estos datos son demostrativos hasta que se confirme información real. No incluyen certificaciones, universidades, hospitales ni credenciales oficiales.</p>
+      <!-- Tarjeta normal del equipo, sin giro, para mantener una opcion sencilla. -->
+      <article class="card"><img src="assets/img/equipo-oncomax.jpg" alt="Equipo OncoMax"><h3>Equipo OncoMax</h3><p>Trabajo humano con respeto y vocacion de servicio.</p></article>
+    </section>
 
-        <div class="card-grid two-columns">
-          <button class="video-card" type="button" data-alert="Aquí se insertará el video correspondiente desde YouTube."><span class="video-frame compact"><span class="play-icon" aria-hidden="true"></span></span><span class="video-text"><strong>Historia de la clínica</strong><small>Video explicativo sobre el origen, propósito y atención de OncoMax.</small></span></button>
-          <button class="video-card" type="button" data-alert="Aquí se insertará el video correspondiente desde YouTube."><span class="video-frame compact"><span class="play-icon" aria-hidden="true"></span></span><span class="video-text"><strong>Ubicación y fundadores</strong><small>Video sobre cómo llegar a la clínica y una breve presentación de sus fundadores.</small></span></button>
-        </div>
-      </div>
+    <h2>Videos</h2>
+    <section class="grid">
+      <article class="card"><iframe class="video" src="https://www.youtube.com/embed/0Ibl5HCrvqg?start=3&rel=0" title="Historia de la clinica" allowfullscreen></iframe><h3>Historia de la clinica</h3></article>
+      <article class="card"><iframe class="video" src="https://www.youtube.com/embed/0Ibl5HCrvqg?start=3&rel=0" title="Ubicacion y fundadores" allowfullscreen></iframe><h3>Ubicacion y fundadores</h3></article>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-inner"><div><h2>OncoMax</h2><p>Centro Médico Integral Oncológico</p><p>Proyecto web educativo desarrollado con HTML, CSS y JavaScript.</p></div><address><strong>WhatsApp:</strong> +591 XXX XXX XX<br><strong>Dirección:</strong> Dirección pendiente de confirmación<br><strong>Horario:</strong> Lunes a viernes, horario pendiente</address><div class="footer-social footer-icons" aria-label="Redes sociales"><a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="">TikTok</a><a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="">Instagram</a><a href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="">WhatsApp</a><a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="">Facebook</a></div></div></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="js/app.js"></script>
+  <footer>
+    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
+    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
+    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
+    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
+    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
+    <div class="footer-redes">
+      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+    </div>
+  </footer>
 </body>
 </html>
