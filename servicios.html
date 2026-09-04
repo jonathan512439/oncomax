@@ -60,24 +60,56 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
-    .card {
+    /* Esta caja reserva un espacio igual para cada servicio. */
+    .servicio {
+      height: 440px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    /* Esta parte contiene los dos lados y es la que realiza el giro. */
+    .servicio-contenido {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform .7s;
+      transform-style: preserve-3d;
+    }
+    /* La tarjeta gira al pasar el mouse o al tocarla desde un celular. */
+    .servicio:hover .servicio-contenido,
+    .servicio:focus .servicio-contenido {
+      transform: rotateY(180deg);
+    }
+    /* Los dos lados ocupan el mismo lugar, como las caras de una tarjeta real. */
+    .servicio-frente,
+    .servicio-atras {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 18px;
       background: white;
       border: 1px solid #E6E1EC;
       border-radius: 16px;
-      padding: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,.06);
-      transition: transform .3s, box-shadow .3s;
+      box-sizing: border-box;
+      backface-visibility: hidden;
     }
-    /* Al pasar el mouse, la tarjeta sube un poco y parece interactiva. */
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(116,55,149,.18);
+    /* El lado de atras comienza volteado y contiene la explicacion completa. */
+    .servicio-atras {
+      transform: rotateY(180deg);
+      overflow: auto;
+      background: #F3EBF6;
     }
-    .card img {
+    /* Las imagenes tienen el mismo tamaño para mantener las tarjetas ordenadas. */
+    .servicio img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 12px;
+    }
+    /* Esta pequeña indicacion avisa que existe informacion al otro lado. */
+    .ayuda {
+      color: #743795;
+      font-weight: bold;
     }
     .boton {
       display: inline-block;
@@ -112,6 +144,9 @@
       .grid {
         grid-template-columns: 1fr;
       }
+      .servicio {
+        height: 460px;
+      }
     }
   </style>
 </head>
@@ -135,27 +170,63 @@
     <h1>Servicios</h1>
     <p>Atencion medica y acompañamiento integral para pacientes y familias.</p>
 
+    <p class="ayuda">Pasa el mouse o toca una tarjeta para conocer los detalles del servicio.</p>
     <section class="grid">
-      <!-- Cada article es un servicio. Cambia las imagenes por archivos reales con estos nombres. -->
-      <article class="card">
-        <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
-        <h2>Oncologo pediatrico</h2>
-        <p>Atencion especializada para niños y adolescentes con sospecha o diagnostico de cancer.</p>
-        <a class="boton" href="reserva.html">Reservar consulta</a>
+      <!-- Esta tarjeta tiene un lado visible y otro lado con mas informacion. -->
+      <article class="servicio" tabindex="0">
+        <div class="servicio-contenido">
+          <div class="servicio-frente">
+            <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
+            <h2>Oncologia pediatrica</h2>
+            <p>Atencion para niños y adolescentes.</p>
+            <p class="ayuda">Ver detalles</p>
+          </div>
+          <div class="servicio-atras">
+            <h2>Oncologia pediatrica</h2>
+            <p><b>¿A quién ayuda?</b><br>A niños, adolescentes y sus familias.</p>
+            <p><b>¿Qué incluye?</b><br>Evaluación, orientación, seguimiento y comunicación adecuada para cada edad.</p>
+            <p><b>Objetivo:</b><br>Brindar una atención cercana que también incluya a la familia.</p>
+            <a class="boton" href="reserva.html">Reservar consulta</a>
+          </div>
+        </div>
       </article>
 
-      <article class="card">
-        <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
-        <h2>Oncologo quirurgico</h2>
-        <p>Evaluacion y tratamiento quirurgico de tumores, con coordinacion del equipo medico.</p>
-        <a class="boton" href="reserva.html">Reservar consulta</a>
+      <!-- Segunda tarjeta giratoria con informacion quirurgica. -->
+      <article class="servicio" tabindex="0">
+        <div class="servicio-contenido">
+          <div class="servicio-frente">
+            <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
+            <h2>Oncologia quirurgica</h2>
+            <p>Evaluacion y tratamiento de tumores.</p>
+            <p class="ayuda">Ver detalles</p>
+          </div>
+          <div class="servicio-atras">
+            <h2>Oncologia quirurgica</h2>
+            <p><b>Primera etapa:</b><br>El especialista revisa estudios y antecedentes del paciente.</p>
+            <p><b>Plan de atención:</b><br>Se explica si una cirugía puede formar parte del tratamiento.</p>
+            <p><b>Seguimiento:</b><br>El equipo acompaña la preparación y la recuperación.</p>
+            <a class="boton" href="reserva.html">Reservar consulta</a>
+          </div>
+        </div>
       </article>
 
-      <article class="card">
-        <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
-        <h2>Acompañamiento integral</h2>
-        <p>Apoyo medico, emocional y familiar durante diagnostico, tratamiento y recuperacion.</p>
-        <a class="boton" href="reserva.html">Reservar consulta</a>
+      <!-- Tercera tarjeta giratoria dedicada al apoyo general. -->
+      <article class="servicio" tabindex="0">
+        <div class="servicio-contenido">
+          <div class="servicio-frente">
+            <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
+            <h2>Acompañamiento integral</h2>
+            <p>Apoyo para el paciente y su entorno.</p>
+            <p class="ayuda">Ver detalles</p>
+          </div>
+          <div class="servicio-atras">
+            <h2>Acompañamiento integral</h2>
+            <p><b>Apoyo médico:</b><br>Orientación durante controles y tratamientos.</p>
+            <p><b>Apoyo emocional:</b><br>Espacios para escuchar dudas, miedos y necesidades.</p>
+            <p><b>Apoyo familiar:</b><br>Consejos sencillos para acompañar al paciente.</p>
+            <a class="boton" href="reserva.html">Reservar consulta</a>
+          </div>
+        </div>
       </article>
     </section>
   </main>

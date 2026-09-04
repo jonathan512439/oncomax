@@ -66,6 +66,12 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+    }
+    /* La tarjeta se levanta al pasar el mouse y hace mas visible al especialista. */
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 28px rgba(116,55,149,.18);
     }
     .card img {
       width: 100%;
@@ -100,6 +106,12 @@
       background: #F3EBF6;
       border-radius: 12px;
       padding: 16px;
+      transition: transform .3s, background .3s;
+    }
+    /* Los pasos se mueven un poco cuando el usuario los señala. */
+    .paso:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      background: #E8D8EE;
     }
     /* Este calendario es solo visual y sirve para explicar una agenda semanal. */
     .calendario {
@@ -118,6 +130,20 @@
     .calendario th {
       background: #743795;
       color: white;
+    }
+    /* Una fila cambia de color al pasar el mouse para facilitar su lectura. */
+    .calendario tr:hover td {
+      background: #F3EBF6;
+    }
+    /* Los horarios disponibles se reconocen con un color suave. */
+    .disponible {
+      color: #26734D;
+      font-weight: bold;
+    }
+    /* Los horarios ocupados se muestran con un color diferente. */
+    .ocupado {
+      color: #A33A3A;
+      font-weight: bold;
     }
     footer {
       text-align: center;
@@ -207,10 +233,14 @@
     <h2>Calendario de atención</h2>
     <table class="calendario">
       <tr><th>Día</th><th>Mañana</th><th>Tarde</th></tr>
-      <tr><td>Lunes</td><td>Disponible</td><td>Disponible</td></tr>
-      <tr><td>Miércoles</td><td>Disponible</td><td>Ocupado</td></tr>
-      <tr><td>Viernes</td><td>Disponible</td><td>Disponible</td></tr>
+      <tr><td>Lunes</td><td class="disponible">Disponible</td><td class="disponible">Disponible</td></tr>
+      <tr><td>Martes</td><td class="ocupado">Ocupado</td><td class="disponible">Disponible</td></tr>
+      <tr><td>Miércoles</td><td class="disponible">Disponible</td><td class="ocupado">Ocupado</td></tr>
+      <tr><td>Jueves</td><td class="disponible">Disponible</td><td class="disponible">Disponible</td></tr>
+      <tr><td>Viernes</td><td class="disponible">Disponible</td><td class="disponible">Disponible</td></tr>
     </table>
+    <!-- El calendario es demostrativo; el horario real se confirma al reservar. -->
+    <p class="aviso">Los horarios son un ejemplo. La clínica debe confirmar la disponibilidad real.</p>
   </main>
 
   <footer>

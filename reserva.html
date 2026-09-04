@@ -65,6 +65,30 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      transition: transform .3s, background .3s;
+    }
+    /* Cada acceso se levanta al señalarlo para indicar que lleva a otra parte. */
+    .pestanas a:hover {
+      transform: translateY(-4px);
+      background: #E8D8EE;
+    }
+    /* Estos tres cuadros explican el recorrido de una solicitud. */
+    .proceso {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .paso {
+      background: #F3EBF6;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      transition: transform .3s;
+    }
+    /* Al señalar un paso este sube un poco, igual que otras tarjetas del sitio. */
+    .paso:hover {
+      transform: translateY(-6px);
     }
     /* El formulario se muestra dentro de una caja blanca. */
     form,
@@ -93,6 +117,24 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
+    /* El borde morado ayuda a reconocer el campo donde se esta escribiendo. */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #743795;
+      outline: 2px solid #F3EBF6;
+    }
+    /* Este grupo encierra opciones que pertenecen a una misma pregunta. */
+    fieldset {
+      border: 1px solid #E6E1EC;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+    /* Estas opciones son pequeñas y no deben ocupar todo el ancho. */
+    .opcion input {
+      width: auto;
+      margin-right: 6px;
+    }
     /* El boton usa el color principal del proyecto. */
     button {
       margin-top: 18px;
@@ -117,6 +159,24 @@
       padding: 25px;
       text-align: center;
       font-weight: bold;
+      transition: transform .3s;
+    }
+    /* La clinica aumenta un poco para mostrar su lugar dentro del croquis. */
+    .clinica:hover {
+      transform: scale(1.03);
+    }
+    /* Esta pregunta se abre y cierra para explicar el funcionamiento del formulario. */
+    details {
+      background: #F3EBF6;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 15px;
+    }
+    /* La frase visible se puede seleccionar para descubrir la respuesta. */
+    summary {
+      color: #743795;
+      cursor: pointer;
+      font-weight: bold;
     }
     footer {
       text-align: center;
@@ -135,6 +195,7 @@
     @media(max-width:700px) {
       .logo { width: 210px; }
       h1 { font-size: 36px; }
+      .proceso { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -163,6 +224,13 @@
       <a href="#ubicacion">Ubicación</a>
     </nav>
 
+    <!-- Estas tarjetas resumen lo que pasara desde la solicitud hasta la cita. -->
+    <section class="proceso">
+      <article class="paso"><b>1. Completa</b><br>Escribe tus datos.</article>
+      <article class="paso"><b>2. Espera</b><br>La clínica revisa el horario.</article>
+      <article class="paso"><b>3. Confirma</b><br>Recibes una llamada o mensaje.</article>
+    </section>
+
     <!-- action con # mantiene la demostracion dentro de esta pagina. -->
     <form id="formulario" action="#">
       <!-- required obliga a completar el campo antes de aceptar el formulario. -->
@@ -183,12 +251,29 @@
       <label for="fecha">Fecha preferida</label>
       <input id="fecha" name="fecha" type="date" required>
 
+      <!-- time permite elegir una hora aproximada usando el control del navegador. -->
+      <label for="hora">Hora preferida</label>
+      <input id="hora" name="hora" type="time" required>
+
+      <!-- Este grupo deja elegir solamente una forma de recibir la confirmacion. -->
+      <fieldset>
+        <legend>¿Cómo prefieres recibir la confirmación?</legend>
+        <label class="opcion"><input name="contacto" type="radio" value="whatsapp" required> WhatsApp</label>
+        <label class="opcion"><input name="contacto" type="radio" value="llamada"> Llamada telefónica</label>
+      </fieldset>
+
       <label for="mensaje">Mensaje adicional</label>
       <textarea id="mensaje" name="mensaje" rows="4"></textarea>
 
       <!-- type submit hace que el navegador revise los campos obligatorios. -->
       <button type="submit">Solicitar cita</button>
     </form>
+
+    <!-- Informacion que ayuda a comprender el limite de esta version escolar. -->
+    <details>
+      <summary>¿Qué ocurre al presionar el botón?</summary>
+      <p>El navegador revisa que los campos obligatorios estén completos. Esta demostración todavía no guarda ni envía los datos.</p>
+    </details>
 
     <!-- Croquis demostrativo construido solamente con cajas HTML y CSS. -->
     <section class="mapa" id="ubicacion">

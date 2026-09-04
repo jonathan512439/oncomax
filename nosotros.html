@@ -68,6 +68,12 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+    }
+    /* Las tarjetas normales se levantan para mostrar que responden al mouse. */
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 28px rgba(116,55,149,.18);
     }
     .card img {
       width: 100%;
@@ -95,7 +101,8 @@
       transform-style: preserve-3d;
     }
     /* Esta parte es la que realmente gira cuando pasamos el mouse encima. */
-    .tarjeta-giratoria:hover .tarjeta-contenido {
+    .tarjeta-giratoria:hover .tarjeta-contenido,
+    .tarjeta-giratoria:focus .tarjeta-contenido {
       transform: rotateY(180deg);
     }
     /* Frente y reverso son las dos caras de la tarjeta. */
@@ -142,6 +149,12 @@
       border-left: 4px solid #743795;
       padding: 5px 18px;
       margin: 15px 0;
+      transition: transform .3s, background .3s;
+    }
+    /* Cada momento se mueve a un lado cuando se lo señala. */
+    .momento:hover {
+      transform: translateX(12px);
+      background: #F3EBF6;
     }
     /* galeria acomoda varias fotos pequeñas en una misma fila. */
     .galeria {
@@ -242,7 +255,7 @@
     <p class="ayuda">Pasa el mouse sobre la tarjeta del doctor para ver su informacion.</p>
     <section class="grid">
       <!-- Primera tarjeta giratoria de ejemplo. -->
-      <article class="tarjeta-giratoria">
+      <article class="tarjeta-giratoria" tabindex="0">
         <!-- tarjeta-contenido es la caja que gira completa. -->
         <div class="tarjeta-contenido">
           <!-- Frente de la tarjeta: aqui se ve primero la foto y el nombre. -->
@@ -262,7 +275,7 @@
       </article>
 
       <!-- Segunda tarjeta giratoria de ejemplo. -->
-      <article class="tarjeta-giratoria">
+      <article class="tarjeta-giratoria" tabindex="0">
         <!-- Esta caja interna permite separar el frente y la parte de atras. -->
         <div class="tarjeta-contenido">
           <!-- Cara visible al inicio. -->

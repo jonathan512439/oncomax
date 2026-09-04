@@ -101,8 +101,26 @@
       text-decoration: none;
       color: #211926;
       box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
     }
-    /* Cada card es un acceso a otra pagina. */
+    /* Cada tarjeta se levanta un poco para mostrar que se puede seleccionar. */
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 28px rgba(116,55,149,.18);
+    }
+    /* Esta explicacion comienza escondida para mantener la pagina ordenada. */
+    .extra {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .4s, opacity .4s;
+    }
+    /* La explicacion aparece cuando el mouse esta sobre la tarjeta. */
+    .card:hover .extra {
+      max-height: 90px;
+      opacity: 1;
+    }
     .card b {
       color: #743795;
     }
@@ -216,12 +234,13 @@
     </video>
     <section class="menu">
       <!-- Esta seccion muestra accesos a las demas paginas. -->
-      <a class="card" href="servicios.html"><b>Servicios</b><br>Atencion y acompañamiento integral.</a>
-      <a class="card" href="asistencia.html"><b>Asistencia Medica</b><br>Especialistas y apoyo domiciliario.</a>
-      <a class="card" href="nosotros.html"><b>Nosotros</b><br>Equipo de OncoMax.</a>
-      <a class="card" href="oncologia.html"><b>Oncologia</b><br>Informacion educativa basica.</a>
-      <a class="card" href="lazos.html"><b>Lazos de apoyo</b><br>Mensajes para pacientes y familias.</a>
-      <a class="card" href="reserva.html"><b>Reservar cita</b><br>Formulario de reserva.</a>
+      <!-- Cada texto extra se descubre al pasar el mouse por su tarjeta. -->
+      <a class="card" href="servicios.html"><b>Servicios</b><br>Atencion y acompañamiento integral.<span class="extra"><br>Conoce las áreas de atención disponibles en la clínica.</span></a>
+      <a class="card" href="asistencia.html"><b>Asistencia Medica</b><br>Especialistas y apoyo domiciliario.<span class="extra"><br>Revisa profesionales, horarios y pasos para recibir atención.</span></a>
+      <a class="card" href="nosotros.html"><b>Nosotros</b><br>Equipo de OncoMax.<span class="extra"><br>Descubre la historia y biografía de nuestro personal.</span></a>
+      <a class="card" href="oncologia.html"><b>Oncologia</b><br>Informacion educativa basica.<span class="extra"><br>Aprende con preguntas, mitos y actividades sencillas.</span></a>
+      <a class="card" href="lazos.html"><b>Lazos de apoyo</b><br>Mensajes para pacientes y familias.<span class="extra"><br>Encuentra consejos para acompañar con respeto y cariño.</span></a>
+      <a class="card" href="reserva.html"><b>Reservar cita</b><br>Formulario de reserva.<span class="extra"><br>Elige un servicio, una fecha y deja tus datos de contacto.</span></a>
     </section>
 
     <div class="redes">

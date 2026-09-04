@@ -66,19 +66,48 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
     }
-    /* Cada mensaje se presenta como una tarjeta blanca. */
+    /* Cada mensaje reserva un espacio donde caben sus dos lados. */
     .mensaje {
-      min-height: 140px;
+      height: 260px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    /* Esta parte guarda el mensaje principal y el consejo que esta detras. */
+    .mensaje-contenido {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform .7s;
+      transform-style: preserve-3d;
+    }
+    /* La tarjeta gira al señalarla o tocarla. */
+    .mensaje:hover .mensaje-contenido,
+    .mensaje:focus .mensaje-contenido {
+      transform: rotateY(180deg);
+    }
+    /* Estos son los dos lados de una misma tarjeta. */
+    .mensaje-frente,
+    .mensaje-atras {
+      position: absolute;
+      width: 100%;
+      height: 100%;
       background: white;
       border: 1px solid #E6E1EC;
       border-radius: 14px;
       padding: 20px;
-      transition: transform .3s, background .3s;
+      box-sizing: border-box;
+      backface-visibility: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
     }
-    /* Al pasar el mouse, la frase se mueve y cambia de color. */
-    .mensaje:hover {
-      transform: translateY(-6px);
+    /* El segundo lado comienza volteado y muestra una accion concreta. */
+    .mensaje-atras {
+      transform: rotateY(180deg);
       background: #F3EBF6;
+    }
+    /* Esta indicacion muestra que la tarjeta se puede explorar. */
+    .ayuda {
+      color: #743795;
+      font-weight: bold;
     }
     /* details permite abrir consejos sin JavaScript. */
     details {
@@ -133,11 +162,27 @@
     <h1>Lazos de apoyo</h1>
     <p>Un espacio con mensajes sencillos para pacientes, familiares y amigos.</p>
 
-    <!-- Cada article contiene una frase que reacciona al pasar el mouse. -->
+    <p class="ayuda">Pasa el mouse o toca una tarjeta para descubrir una forma de ayudar.</p>
+    <!-- Cada tarjeta gira y presenta un consejo distinto en su segundo lado. -->
     <section class="mensajes">
-      <article class="mensaje"><h2>Para el paciente</h2><p>No tienes que vivir cada paso en soledad. Pedir apoyo también es cuidarte.</p></article>
-      <article class="mensaje"><h2>Para la familia</h2><p>Escuchar con calma puede ser una ayuda muy valiosa durante el tratamiento.</p></article>
-      <article class="mensaje"><h2>Para los amigos</h2><p>Una llamada, una visita o un mensaje breve pueden acompañar mucho.</p></article>
+      <article class="mensaje" tabindex="0">
+        <div class="mensaje-contenido">
+          <div class="mensaje-frente"><h2>Para el paciente</h2><p>No tienes que vivir cada paso en soledad. Pedir apoyo también es cuidarte.</p><p class="ayuda">Descubrir consejo</p></div>
+          <div class="mensaje-atras"><h2>Una acción para hoy</h2><p>Elige a una persona de confianza y cuéntale qué tipo de ayuda necesitas: compañía, transporte, conversación o descanso.</p></div>
+        </div>
+      </article>
+      <article class="mensaje" tabindex="0">
+        <div class="mensaje-contenido">
+          <div class="mensaje-frente"><h2>Para la familia</h2><p>Escuchar con calma puede ser una ayuda muy valiosa durante el tratamiento.</p><p class="ayuda">Descubrir consejo</p></div>
+          <div class="mensaje-atras"><h2>Una acción para hoy</h2><p>Pregunta: “¿Qué puedo hacer por ti hoy?”. Una pregunta clara evita suponer lo que la otra persona necesita.</p></div>
+        </div>
+      </article>
+      <article class="mensaje" tabindex="0">
+        <div class="mensaje-contenido">
+          <div class="mensaje-frente"><h2>Para los amigos</h2><p>Una llamada, una visita o un mensaje breve pueden acompañar mucho.</p><p class="ayuda">Descubrir consejo</p></div>
+          <div class="mensaje-atras"><h2>Una acción para hoy</h2><p>Envía un mensaje sencillo y sin exigir respuesta. Lo importante es recordar que sigues presente.</p></div>
+        </div>
+      </article>
     </section>
 
     <!-- Consejos desplegables: se abren al hacer clic en el titulo. -->
@@ -145,6 +190,8 @@
     <details><summary>Escuchar sin interrumpir</summary><p>Permite que la persona exprese cómo se siente sin obligarla a responder.</p></details>
     <details><summary>Ofrecer ayuda concreta</summary><p>Por ejemplo, acompañar a una cita o ayudar con una tarea cotidiana.</p></details>
     <details><summary>Respetar sus tiempos</summary><p>Cada persona enfrenta el proceso de una manera distinta.</p></details>
+    <details><summary>Acompañar durante una cita</summary><p>Puedes ayudar a anotar preguntas y recordar las indicaciones del profesional.</p></details>
+    <details><summary>Cuidar también al cuidador</summary><p>Quien acompaña necesita descansar, conversar y pedir ayuda cuando se siente cansado.</p></details>
   </main>
 
   <!-- Pie de pagina con informacion de contacto y redes. -->
