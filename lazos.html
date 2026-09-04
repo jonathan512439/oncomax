@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- Esta linea indica que usamos la version actual de HTML. -->
+<html lang="es">
+<head>
+  <!-- UTF-8 permite mostrar correctamente tildes y la letra ñ. -->
+  <meta charset="UTF-8">
+  <!-- viewport adapta el contenido al ancho de celulares y computadoras. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Este nombre aparece en la pestaña del navegador. -->
+  <title>Lazos de apoyo | OncoMax</title>
+  <style>
+    /* body controla el aspecto general de toda la pagina. */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FAFAFC;
+      color: #211926;
+      line-height: 1.5;
+    }
+    /* header es la barra superior que contiene el logo y el menu. */
+    header {
+      background: white;
+      border-bottom: 1px solid #E6E1EC;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    /* Se define un ancho visible para el logo. */
+    .logo {
+      width: 260px;
+      height: 70px;
+      object-fit: cover;
+    }
+    /* Estos estilos hacen que los enlaces parezcan botones del menu. */
+    nav a {
+      display: inline-block;
+      margin: 5px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #743795;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    /* La pagina activa y el enlace bajo el mouse cambian de fondo. */
+    nav a:hover,
+    .activo {
+      background: #F3EBF6;
+    }
+    /* main limita el ancho para que los textos no sean demasiado largos. */
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+    /* El titulo principal usa el color representativo de OncoMax. */
+    h1 {
+      color: #743795;
+      font-size: 42px;
+    }
+    /* mensajes crea tres columnas para las frases de apoyo. */
+    .mensajes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    /* Cada mensaje se presenta como una tarjeta blanca. */
+    .mensaje {
+      min-height: 140px;
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 14px;
+      padding: 20px;
+      transition: transform .3s, background .3s;
+    }
+    /* Al pasar el mouse, la frase se mueve y cambia de color. */
+    .mensaje:hover {
+      transform: translateY(-6px);
+      background: #F3EBF6;
+    }
+    /* details permite abrir consejos sin JavaScript. */
+    details {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 10px;
+      margin: 10px 0;
+      padding: 14px;
+    }
+    summary {
+      color: #743795;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    /* El pie de pagina contiene los datos generales. */
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid #E6E1EC;
+      padding: 22px;
+      margin-top: 30px;
+      color: #6A6170;
+    }
+    .footer-redes img {
+      width: 24px;
+      height: 24px;
+      margin: 6px;
+    }
+    /* En pantallas pequeñas las tarjetas se muestran una debajo de otra. */
+    @media(max-width:700px) {
+      .logo { width: 210px; }
+      .mensajes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu principal compartido con las otras paginas. -->
+  <header>
+    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="asistencia.html">Asistencia Medica</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="oncologia.html">Oncologia</a>
+      <a class="activo" href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Lazos de apoyo</h1>
+    <p>Un espacio con mensajes sencillos para pacientes, familiares y amigos.</p>
+
+    <!-- Cada article contiene una frase que reacciona al pasar el mouse. -->
+    <section class="mensajes">
+      <article class="mensaje"><h2>Para el paciente</h2><p>No tienes que vivir cada paso en soledad. Pedir apoyo también es cuidarte.</p></article>
+      <article class="mensaje"><h2>Para la familia</h2><p>Escuchar con calma puede ser una ayuda muy valiosa durante el tratamiento.</p></article>
+      <article class="mensaje"><h2>Para los amigos</h2><p>Una llamada, una visita o un mensaje breve pueden acompañar mucho.</p></article>
+    </section>
+
+    <!-- Consejos desplegables: se abren al hacer clic en el titulo. -->
+    <h2>Formas de acompañar</h2>
+    <details><summary>Escuchar sin interrumpir</summary><p>Permite que la persona exprese cómo se siente sin obligarla a responder.</p></details>
+    <details><summary>Ofrecer ayuda concreta</summary><p>Por ejemplo, acompañar a una cita o ayudar con una tarea cotidiana.</p></details>
+    <details><summary>Respetar sus tiempos</summary><p>Cada persona enfrenta el proceso de una manera distinta.</p></details>
+  </main>
+
+  <!-- Pie de pagina con informacion de contacto y redes. -->
+  <footer>
+    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
+    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
+    <div class="footer-redes">
+      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+    </div>
+  </footer>
+</body>
+</html>

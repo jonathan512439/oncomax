@@ -88,6 +88,37 @@
       padding: 12px;
       border-radius: 10px;
     }
+    /* pasos reparte el proceso de reserva en tres cuadros faciles de leer. */
+    .pasos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 28px;
+    }
+    /* Cada paso tiene fondo suave para separarlo del resto. */
+    .paso {
+      background: #F3EBF6;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    /* Este calendario es solo visual y sirve para explicar una agenda semanal. */
+    .calendario {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: white;
+    }
+    /* Las celdas del calendario tienen lineas para que se distingan. */
+    .calendario th,
+    .calendario td {
+      border: 1px solid #E6E1EC;
+      padding: 10px;
+      text-align: center;
+    }
+    .calendario th {
+      background: #743795;
+      color: white;
+    }
     footer {
       text-align: center;
       background: white;
@@ -112,6 +143,9 @@
       .grid {
         grid-template-columns: 1fr;
       }
+      .pasos {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -126,7 +160,8 @@
       <a class="activo" href="asistencia.html">Asistencia Medica</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="oncologia.html">Oncologia</a>
-      <a href="index.html">Reserva</a>
+      <a href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
     </nav>
   </header>
 
@@ -141,7 +176,7 @@
         <h2>Dra. Elena Rosales Sokolov</h2>
         <p><b>Especialista en oncologia quirurgica</b></p>
         <p>Profesional enfocada en evaluacion y tratamiento quirurgico de pacientes oncologicos.</p>
-        <a class="boton" href="index.html">Reservar consulta</a>
+        <a class="boton" href="reserva.html">Reservar consulta</a>
       </article>
 
       <!-- Tarjeta de especialista 2. -->
@@ -150,7 +185,7 @@
         <h2>Dra. Amara Orellio Rojo</h2>
         <p><b>Especialista en oncologia medica e inmuno-oncologia</b></p>
         <p>Profesional orientada al tratamiento integral y seguimiento clinico del paciente.</p>
-        <a class="boton" href="index.html">Reservar consulta</a>
+        <a class="boton" href="reserva.html">Reservar consulta</a>
       </article>
     </section>
 
@@ -160,6 +195,22 @@
       <h2>Asistencia domiciliaria</h2>
       <p>Servicio pensado para orientar y acompañar a pacientes que requieren apoyo medico basico desde casa.</p>
     </article>
+
+    <!-- Esta seccion explica el proceso con solo tres pasos. -->
+    <section class="pasos">
+      <article class="paso"><h3>1. Elige</h3><p>Selecciona la atención que necesitas.</p></article>
+      <article class="paso"><h3>2. Solicita</h3><p>Completa los datos básicos de la reserva.</p></article>
+      <article class="paso"><h3>3. Confirma</h3><p>La clínica confirma el horario por teléfono.</p></article>
+    </section>
+
+    <!-- Tabla sencilla que funciona como ejemplo de calendario de atención. -->
+    <h2>Calendario de atención</h2>
+    <table class="calendario">
+      <tr><th>Día</th><th>Mañana</th><th>Tarde</th></tr>
+      <tr><td>Lunes</td><td>Disponible</td><td>Disponible</td></tr>
+      <tr><td>Miércoles</td><td>Disponible</td><td>Ocupado</td></tr>
+      <tr><td>Viernes</td><td>Disponible</td><td>Disponible</td></tr>
+    </table>
   </main>
 
   <footer>

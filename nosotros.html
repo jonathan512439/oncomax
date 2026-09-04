@@ -137,6 +137,29 @@
       padding: 12px;
       border-radius: 10px;
     }
+    /* La linea de tiempo coloca una barra morada al lado de cada momento importante. */
+    .momento {
+      border-left: 4px solid #743795;
+      padding: 5px 18px;
+      margin: 15px 0;
+    }
+    /* galeria acomoda varias fotos pequeñas en una misma fila. */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    /* La foto aumenta suavemente al pasar el mouse. */
+    .galeria img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform .3s;
+    }
+    .galeria img:hover {
+      transform: scale(1.04);
+    }
     footer {
       text-align: center;
       background: white;
@@ -166,6 +189,9 @@
       .tarjeta-giratoria {
         height: 360px;
       }
+      .galeria {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -179,7 +205,8 @@
       <a href="asistencia.html">Asistencia Medica</a>
       <a class="activo" href="nosotros.html">Nosotros</a>
       <a href="oncologia.html">Oncologia</a>
-      <a href="index.html">Reserva</a>
+      <a href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
     </nav>
   </header>
 
@@ -194,6 +221,22 @@
       <article class="card"><img src="assets/img/enfermera-sofia.jpg" alt="Sofia Ramos"><h3>Sofia Ramos</h3><p>Acompañamiento diario, control basico y orientacion.</p></article>
     </section>
 
+    <!-- La linea de tiempo cuenta la historia en orden, desde el inicio hasta hoy. -->
+    <h2>Nuestra historia</h2>
+    <section>
+      <article class="momento"><h3>2018 - La idea</h3><p>Nace el proyecto de acompañar a pacientes oncológicos y sus familias.</p></article>
+      <article class="momento"><h3>2021 - Nuevo equipo</h3><p>Se integran profesionales de distintas áreas médicas.</p></article>
+      <article class="momento"><h3>Hoy - Atención integral</h3><p>OncoMax continúa creciendo con atención médica y apoyo humano.</p></article>
+    </section>
+
+    <!-- Galeria sencilla. Al pasar el mouse, cada imagen se agranda un poco. -->
+    <h2>Galería de la clínica</h2>
+    <section class="galeria">
+      <img src="assets/img/equipo-oncomax.jpg" alt="Equipo de la clínica">
+      <img src="assets/img/asistencia-domiciliaria.jpg" alt="Atención a pacientes">
+      <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento médico">
+    </section>
+
     <h2>Doctores</h2>
     <!-- Este texto explica al usuario como ver la informacion oculta. -->
     <p class="ayuda">Pasa el mouse sobre la tarjeta del doctor para ver su informacion.</p>
@@ -204,13 +247,13 @@
         <div class="tarjeta-contenido">
           <!-- Frente de la tarjeta: aqui se ve primero la foto y el nombre. -->
           <div class="tarjeta-frente">
-            <img src="assets/img/doctor-roberto.jpg" alt="Dr. Roberto Vargas">
-            <h3>Dr. Roberto Vargas</h3>
+            <img src="assets/img/doctor-abdon.jpg" alt="Dr. Abdon Vargas">
+            <h3>Dr. Abdon Vargas</h3>
             <p class="ayuda">Ver biografia</p>
           </div>
           <!-- Parte de atras: aparece cuando la tarjeta gira. -->
           <div class="tarjeta-atras">
-            <h3>Dr. Roberto Vargas</h3>
+            <h3>Dr. Abdon Vargas</h3>
             <p><b>Especialidad:</b> Oncologia medica.</p>
             <p><b>Historia:</b> Medico demostrativo de la clinica OncoMax, enfocado en orientar a pacientes y familias durante el proceso de atencion.</p>
             <p><b>Enfoque:</b> Explicar los pasos del tratamiento con palabras claras y acompañar con respeto.</p>
@@ -224,13 +267,13 @@
         <div class="tarjeta-contenido">
           <!-- Cara visible al inicio. -->
           <div class="tarjeta-frente">
-            <img src="assets/img/doctora-carla.jpg" alt="Dra. Carla Mendoza">
-            <h3>Dra. Carla Mendoza</h3>
+            <img src="assets/img/doctor-erik.jpg" alt="Dr. Erik Mendoza">
+            <h3>Dr. Erik Mendoza</h3>
             <p class="ayuda">Ver biografia</p>
           </div>
           <!-- Cara que aparece con el giro. -->
           <div class="tarjeta-atras">
-            <h3>Dra. Carla Mendoza</h3>
+            <h3>Dr. Erik Mendoza</h3>
             <p><b>Especialidad:</b> Oncologia pediatrica.</p>
             <p><b>Historia:</b> Profesional demostrativa dedicada al acompañamiento de niños, adolescentes y sus familias.</p>
             <p><b>Enfoque:</b> Atencion humana, comunicacion sencilla y apoyo durante controles medicos.</p>

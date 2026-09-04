@@ -66,6 +66,12 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+    }
+    /* Al pasar el mouse, la tarjeta sube un poco y parece interactiva. */
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(116,55,149,.18);
     }
     .card img {
       width: 100%;
@@ -119,7 +125,8 @@
       <a href="asistencia.html">Asistencia Medica</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="oncologia.html">Oncologia</a>
-      <a href="index.html">Reserva</a>
+      <a href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
     </nav>
   </header>
 
@@ -134,21 +141,21 @@
         <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
         <h2>Oncologo pediatrico</h2>
         <p>Atencion especializada para niños y adolescentes con sospecha o diagnostico de cancer.</p>
-        <a class="boton" href="index.html">Reservar consulta</a>
+        <a class="boton" href="reserva.html">Reservar consulta</a>
       </article>
 
       <article class="card">
         <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
         <h2>Oncologo quirurgico</h2>
         <p>Evaluacion y tratamiento quirurgico de tumores, con coordinacion del equipo medico.</p>
-        <a class="boton" href="index.html">Reservar consulta</a>
+        <a class="boton" href="reserva.html">Reservar consulta</a>
       </article>
 
       <article class="card">
         <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
         <h2>Acompañamiento integral</h2>
         <p>Apoyo medico, emocional y familiar durante diagnostico, tratamiento y recuperacion.</p>
-        <a class="boton" href="index.html">Reservar consulta</a>
+        <a class="boton" href="reserva.html">Reservar consulta</a>
       </article>
     </section>
   </main>

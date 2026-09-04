@@ -80,6 +80,50 @@
       padding: 10px 14px;
       border-radius: 10px;
     }
+    /* menu-interno permite saltar a una parte de esta misma pagina. */
+    .menu-interno a {
+      display: inline-block;
+      margin: 5px;
+      color: #743795;
+      font-weight: bold;
+    }
+    /* mitos coloca dos tarjetas juntas para comparar ideas. */
+    .mitos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    /* Al pasar el mouse, la tarjeta cambia de color y muestra que es interactiva. */
+    .mito:hover {
+      background: #F3EBF6;
+      transform: translateY(-4px);
+    }
+    .mito {
+      transition: .3s;
+    }
+    /* details permite abrir cada pregunta del mini cuestionario. */
+    details {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 10px;
+      margin: 10px 0;
+      padding: 14px;
+    }
+    summary {
+      color: #743795;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    /* pre conserva los espacios de la sopa de letras para formar una cuadricula. */
+    .sopa {
+      overflow: auto;
+      background: #211926;
+      color: white;
+      padding: 18px;
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: center;
+    }
     footer {
       text-align: center;
       background: white;
@@ -100,6 +144,9 @@
       .logo {
         width: 210px;
       }
+      .mitos {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -113,16 +160,48 @@
       <a href="asistencia.html">Asistencia Medica</a>
       <a href="nosotros.html">Nosotros</a>
       <a class="activo" href="oncologia.html">Oncologia</a>
-      <a href="index.html">Reserva</a>
+      <a href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
     </nav>
   </header>
 
   <main>
     <h1>El mundo de la oncologia</h1>
 
-    <section class="card">
+    <!-- Estos enlaces llevan a secciones de esta misma pagina usando su id. -->
+    <nav class="menu-interno">
+      <a href="#informacion">Información</a>
+      <a href="#mitos">Mitos</a>
+      <a href="#juego">Juego</a>
+    </nav>
+
+    <section class="card" id="informacion">
       <h2>¿Que es la oncologia?</h2>
       <p>La oncologia es la rama de la medicina encargada de estudiar, prevenir, diagnosticar y tratar enfermedades relacionadas con tumores y cancer.</p>
+    </section>
+
+    <!-- Tarjetas para comparar un mito con la explicación correcta. -->
+    <h2 id="mitos">Mitos y realidades</h2>
+    <section class="mitos">
+      <article class="card mito"><h3>Mito: el cáncer siempre es hereditario</h3><p><b>Realidad:</b> algunos casos tienen relación familiar, pero muchos aparecen por distintos factores.</p></article>
+      <article class="card mito"><h3>Mito: todos los tratamientos son iguales</h3><p><b>Realidad:</b> cada paciente recibe una orientación según su diagnóstico y evaluación médica.</p></article>
+    </section>
+
+    <!-- Mini cuestionario. La respuesta aparece al abrir cada pregunta. -->
+    <h2>Comprueba lo aprendido</h2>
+    <details><summary>¿La detección temprana puede ayudar?</summary><p>Si. Permite evaluar el caso y buscar atención profesional oportunamente.</p></details>
+    <details><summary>¿Una página web puede dar un diagnóstico?</summary><p>No. El diagnóstico corresponde a profesionales y estudios médicos.</p></details>
+
+    <!-- Juego realizado con texto normal. Se deben buscar las palabras indicadas. -->
+    <section class="card" id="juego">
+      <h2>Sopa de letras</h2>
+      <p>Busca: SALUD, APOYO, VIDA y MEDICO.</p>
+      <pre class="sopa">S A L U D R T M
+P C V I D A E E
+A P O Y O N D D
+T R A T A R I I
+C U I D A R C C
+F A M I L I O O</pre>
     </section>
 
     <section class="card">

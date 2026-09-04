@@ -131,6 +131,38 @@
       height: 24px;
       margin: 6px;
     }
+    /* details crea una pregunta que se abre al hacer clic, sin usar JavaScript. */
+    details {
+      background: white;
+      border: 1px solid #E6E1EC;
+      border-radius: 10px;
+      margin: 10px auto;
+      padding: 14px;
+      max-width: 720px;
+      text-align: left;
+    }
+    /* summary es la parte visible de cada pregunta. */
+    summary {
+      color: #743795;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    /* Este boton queda fijo abajo para encontrar WhatsApp facilmente. */
+    .whatsapp-fijo {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25D366;
+      border-radius: 50%;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    }
+    /* La imagen dentro del boton mantiene un tamaño facil de tocar. */
+    .whatsapp-fijo img {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
     /* Iconos pequeñitos del footer. */
     @media(max-width:700px) {
       .logo {
@@ -159,7 +191,8 @@
       <a href="asistencia.html">Asistencia Medica</a>
       <a href="nosotros.html">Nosotros</a>
       <a href="oncologia.html">Oncologia</a>
-      <a href="index.html">Reserva</a>
+      <a href="lazos.html">Lazos</a>
+      <a href="reserva.html">Reserva</a>
     </nav>
   </header>
 
@@ -187,7 +220,8 @@
       <a class="card" href="asistencia.html"><b>Asistencia Medica</b><br>Especialistas y apoyo domiciliario.</a>
       <a class="card" href="nosotros.html"><b>Nosotros</b><br>Equipo de OncoMax.</a>
       <a class="card" href="oncologia.html"><b>Oncologia</b><br>Informacion educativa basica.</a>
-      <a class="card" href="index.html"><b>Reservar cita</b><br>Formulario de Reserva.</a>
+      <a class="card" href="lazos.html"><b>Lazos de apoyo</b><br>Mensajes para pacientes y familias.</a>
+      <a class="card" href="reserva.html"><b>Reservar cita</b><br>Formulario de reserva.</a>
     </section>
 
     <div class="redes">
@@ -197,7 +231,30 @@
       <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
       <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
     </div>
+
+    <!-- Esta seccion usa etiquetas details para mostrar y ocultar respuestas. -->
+    <section id="preguntas">
+      <h2>Preguntas frecuentes</h2>
+      <!-- Al hacer clic en la pregunta, el navegador abre la respuesta por si solo. -->
+      <details>
+        <summary>¿Necesito una cita para recibir orientación?</summary>
+        <p>Si, puedes solicitarla desde la página Reserva o comunicarte por WhatsApp.</p>
+      </details>
+      <details>
+        <summary>¿OncoMax atiende a niños?</summary>
+        <p>Si, contamos con información y atención de oncología pediátrica.</p>
+      </details>
+      <details>
+        <summary>¿La información del sitio reemplaza al médico?</summary>
+        <p>No. Esta página es educativa y una evaluación siempre debe realizarla un profesional.</p>
+      </details>
+    </section>
   </main>
+
+  <!-- Enlace fijo: abre una conversación de WhatsApp en otra pestaña. -->
+  <a class="whatsapp-fijo" href="https://wa.me/59164556725" target="_blank" aria-label="Abrir WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+  </a>
 
   <footer>
     <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
