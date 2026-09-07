@@ -6,243 +6,212 @@
   <!-- Permite tildes y ñ. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Hace que funcione bien en celular. -->
+  <meta name="description" content="Servicios de OncoMax: oncologia pediatrica, oncologia quirurgica y acompañamiento integral.">
   <title>Servicios | OncoMax</title>
   <!-- Nombre de la pestaña. -->
-  <style>
-    /* Estilos simples escritos dentro del mismo HTML para que el estudiante vea todo junto. */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #FAFAFC;
-      color: #211926;
-      line-height: 1.5;
-    }
-    header {
-      background: white;
-      border-bottom: 1px solid #E6E1EC;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      width: 260px;
-      height: 70px;
-      object-fit: cover;
-      object-position: center;
-    }
-    nav a {
-      display: inline-block;
-      margin: 5px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: #743795;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover,
-    .activo {
-      background: #F3EBF6;
-    }
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 35px 20px;
-    }
-    h1 {
-      color: #743795;
-      font-size: 42px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    /* Esta caja reserva un espacio igual para cada servicio. */
-    .servicio {
-      height: 440px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-    /* Esta parte contiene los dos lados y es la que realiza el giro. */
-    .servicio-contenido {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform .7s;
-      transform-style: preserve-3d;
-    }
-    /* La tarjeta gira al pasar el mouse o al tocarla desde un celular. */
-    .servicio:hover .servicio-contenido,
-    .servicio:focus .servicio-contenido {
-      transform: rotateY(180deg);
-    }
-    /* Los dos lados ocupan el mismo lugar, como las caras de una tarjeta real. */
-    .servicio-frente,
-    .servicio-atras {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 18px;
-      background: white;
-      border: 1px solid #E6E1EC;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
-      box-sizing: border-box;
-      backface-visibility: hidden;
-    }
-    /* El lado de atras comienza volteado y contiene la explicacion completa. */
-    .servicio-atras {
-      transform: rotateY(180deg);
-      overflow: auto;
-      background: #F3EBF6;
-    }
-    /* Las imagenes tienen el mismo tamaño para mantener las tarjetas ordenadas. */
-    .servicio img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    /* Esta pequeña indicacion avisa que existe informacion al otro lado. */
-    .ayuda {
-      color: #743795;
-      font-weight: bold;
-    }
-    .boton {
-      display: inline-block;
-      background: #743795;
-      color: white;
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 10px;
-      margin-top: 8px;
-    }
-    footer {
-      text-align: center;
-      background: white;
-      border-top: 1px solid #E6E1EC;
-      padding: 22px;
-      margin-top: 30px;
-      color: #6A6170;
-    }
-    footer b {
-      color: #743795;
-    }
-    .footer-redes img {
-      width: 24px;
-      height: 24px;
-      margin: 6px;
-    }
-    /* Este segmento define estilos para pantallas pequeñas */
-    @media(max-width:700px) {
-      .logo {
-        width: 210px;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .servicio {
-        height: 460px;
-      }
-    }
-  </style>
+  <link rel="icon" href="assets/img/logo-oncomax.png">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Los estilos son los mismos para todo el sitio. -->
 </head>
 <body>
-  <!-- Menu superior. -->
-  <header>
-    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a class="activo" href="servicios.html">Servicios</a>
-      <a href="asistencia.html">Asistencia Medica</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="oncologia.html">Oncologia</a>
-      <a href="lazos.html">Lazos</a>
-      <a href="reserva.html">Reserva</a>
-    </nav>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <label class="hamburguesa" for="nav-toggle" aria-label="Abrir o cerrar el menu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a class="activo" href="servicios.html">Servicios</a>
+        <a href="asistencia.html">Asistencia</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="oncologia.html">Oncologia</a>
+        <a href="lazos.html">Lazos</a>
+        <a href="reserva.html">Reserva</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Titulo de la pagina. -->
-    <h1>Servicios</h1>
-    <p>Atencion medica y acompañamiento integral para pacientes y familias.</p>
-
-    <p class="ayuda">Pasa el mouse o toca una tarjeta para conocer los detalles del servicio.</p>
-    <section class="grid">
-      <!-- Esta tarjeta tiene un lado visible y otro lado con mas informacion. -->
-      <article class="servicio" tabindex="0">
-        <div class="servicio-contenido">
-          <div class="servicio-frente">
-            <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
-            <h2>Oncologia pediatrica</h2>
-            <p>Atencion para niños y adolescentes.</p>
-            <p class="ayuda">Ver detalles</p>
-          </div>
-          <div class="servicio-atras">
-            <h2>Oncologia pediatrica</h2>
-            <p><b>¿A quién ayuda?</b><br>A niños, adolescentes y sus familias.</p>
-            <p><b>¿Qué incluye?</b><br>Evaluación, orientación, seguimiento y comunicación adecuada para cada edad.</p>
-            <p><b>Objetivo:</b><br>Brindar una atención cercana que también incluya a la familia.</p>
-            <a class="boton" href="reserva.html">Reservar consulta</a>
-          </div>
+    <!-- ================= PORTADA DE LA PAGINA ================= -->
+    <section class="seccion seccion--blanca">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Areas de atencion</span>
+          <h1>Servicios</h1>
+          <p>Atencion medica y acompañamiento integral para pacientes y familias.
+             Cada tarjeta gira al pasar el mouse, al tocarla o al llegar con la tecla Tab.</p>
         </div>
-      </article>
 
-      <!-- Segunda tarjeta giratoria con informacion quirurgica. -->
-      <article class="servicio" tabindex="0">
-        <div class="servicio-contenido">
-          <div class="servicio-frente">
-            <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
-            <h2>Oncologia quirurgica</h2>
-            <p>Evaluacion y tratamiento de tumores.</p>
-            <p class="ayuda">Ver detalles</p>
-          </div>
-          <div class="servicio-atras">
-            <h2>Oncologia quirurgica</h2>
-            <p><b>Primera etapa:</b><br>El especialista revisa estudios y antecedentes del paciente.</p>
-            <p><b>Plan de atención:</b><br>Se explica si una cirugía puede formar parte del tratamiento.</p>
-            <p><b>Seguimiento:</b><br>El equipo acompaña la preparación y la recuperación.</p>
-            <a class="boton" href="reserva.html">Reservar consulta</a>
-          </div>
-        </div>
-      </article>
+        <!-- Estas tres tarjetas giratorias son el centro de la pagina. -->
+        <section class="grid grid--3 revelar">
+          <!-- Servicio 1. -->
+          <article class="flip flip--servicio" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <img src="assets/img/servicio-pediatrico.jpg" alt="Oncologo pediatrico">
+                <h2>Oncologia pediatrica</h2>
+                <p>Atencion para niños y adolescentes.</p>
+                <span class="pista">Ver detalles</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h2>Oncologia pediatrica</h2>
+                <p><b>¿A quien ayuda?</b><br>A niños, adolescentes y sus familias.</p>
+                <p><b>¿Que incluye?</b><br>Evaluacion, orientacion, seguimiento y comunicacion adecuada para cada edad.</p>
+                <p><b>Objetivo:</b><br>Brindar una atencion cercana que tambien incluya a la familia.</p>
+                <a class="boton" href="reserva.html">Reservar consulta</a>
+              </div>
+            </div>
+          </article>
 
-      <!-- Tercera tarjeta giratoria dedicada al apoyo general. -->
-      <article class="servicio" tabindex="0">
-        <div class="servicio-contenido">
-          <div class="servicio-frente">
-            <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
-            <h2>Acompañamiento integral</h2>
-            <p>Apoyo para el paciente y su entorno.</p>
-            <p class="ayuda">Ver detalles</p>
-          </div>
-          <div class="servicio-atras">
-            <h2>Acompañamiento integral</h2>
-            <p><b>Apoyo médico:</b><br>Orientación durante controles y tratamientos.</p>
-            <p><b>Apoyo emocional:</b><br>Espacios para escuchar dudas, miedos y necesidades.</p>
-            <p><b>Apoyo familiar:</b><br>Consejos sencillos para acompañar al paciente.</p>
-            <a class="boton" href="reserva.html">Reservar consulta</a>
-          </div>
+          <!-- Servicio 2. -->
+          <article class="flip flip--servicio" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <img src="assets/img/servicio-quirurgico.jpg" alt="Oncologo quirurgico">
+                <h2>Oncologia quirurgica</h2>
+                <p>Evaluacion y tratamiento de tumores.</p>
+                <span class="pista">Ver detalles</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h2>Oncologia quirurgica</h2>
+                <p><b>Primera etapa:</b><br>El especialista revisa estudios y antecedentes del paciente.</p>
+                <p><b>Plan de atencion:</b><br>Se explica si una cirugia puede formar parte del tratamiento.</p>
+                <p><b>Seguimiento:</b><br>El equipo acompaña la preparacion y la recuperacion.</p>
+                <a class="boton" href="reserva.html">Reservar consulta</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servicio 3. -->
+          <article class="flip flip--servicio" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <img src="assets/img/servicio-acompanamiento.jpg" alt="Acompañamiento integral">
+                <h2>Acompañamiento integral</h2>
+                <p>Apoyo para el paciente y su entorno.</p>
+                <span class="pista">Ver detalles</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h2>Acompañamiento integral</h2>
+                <p><b>Apoyo medico:</b><br>Orientacion durante controles y tratamientos.</p>
+                <p><b>Apoyo emocional:</b><br>Espacios para escuchar dudas, miedos y necesidades.</p>
+                <p><b>Apoyo familiar:</b><br>Consejos sencillos para acompañar al paciente.</p>
+                <a class="boton" href="reserva.html">Reservar consulta</a>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <!-- ================= SERVICIO DE APOYO ================= -->
+    <section class="seccion">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Servicio complementario</span>
+          <h2>Tambien acompañamos desde casa</h2>
         </div>
-      </article>
+
+        <section class="grid grid--2 revelar">
+          <article class="flip flip--servicio" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <img src="assets/img/asistencia-domiciliaria.jpg" alt="Asistencia domiciliaria">
+                <h2>Asistencia domiciliaria</h2>
+                <p>Para pacientes que requieren apoyo medico basico en su hogar.</p>
+                <span class="pista">Ver detalles</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h2>Asistencia domiciliaria</h2>
+                <p><b>¿Para quien es?</b><br>Para pacientes con dificultad para trasladarse hasta la clinica.</p>
+                <p><b>¿Que incluye?</b><br>Control basico, orientacion de cuidados y coordinacion con el especialista.</p>
+                <p><b>¿Como se solicita?</b><br>Desde la pagina Reserva o por WhatsApp.</p>
+                <a class="boton" href="reserva.html">Solicitar visita</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Una lista corta con lo que si y lo que no hace la clinica. -->
+          <article class="card">
+            <h2>Como funciona la atencion</h2>
+            <p>Cualquiera de los tres servicios sigue el mismo recorrido:</p>
+            <details>
+              <summary>1. Primer contacto</summary>
+              <p>Recibimos tu solicitud por el formulario o por WhatsApp y revisamos el horario disponible.</p>
+            </details>
+            <details>
+              <summary>2. Consulta con el especialista</summary>
+              <p>El profesional revisa antecedentes, estudios previos y responde tus dudas.</p>
+            </details>
+            <details>
+              <summary>3. Plan y seguimiento</summary>
+              <p>Se explica el plan de atencion en palabras claras y se agenda el siguiente control.</p>
+            </details>
+            <p class="aviso">Este sitio es educativo: el diagnostico y el tratamiento siempre los define un profesional.</p>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <!-- ================= LLAMADO FINAL ================= -->
+    <section class="seccion seccion--suave">
+      <div class="seccion__interior titulo-seccion titulo-seccion--centro revelar">
+        <h2>¿No sabes cual servicio necesitas?</h2>
+        <p>Escribenos y te orientamos sobre cual area corresponde a tu caso.</p>
+        <div class="acciones">
+          <a class="boton" href="reserva.html">Reservar una cita</a>
+          <a class="boton boton--claro" href="https://wa.me/59164556725" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
-    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
-    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
-    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
-    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
-    <div class="footer-redes">
-      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
-      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
-      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
-      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+  <!-- Enlace fijo de WhatsApp. -->
+  <a class="whatsapp-fijo" href="https://wa.me/59164556725" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- ================= PIE DE PAGINA ================= -->
+  <footer class="pie">
+    <div class="pie__interior">
+      <div>
+        <img class="pie__logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax">
+        <p>Centro Medico Integral Oncologico. Orientacion, atencion y acompañamiento humano.</p>
+      </div>
+      <div>
+        <h3>Paginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="asistencia.html">Asistencia Medica</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="oncologia.html">Oncologia</a></li>
+          <li><a href="lazos.html">Lazos de apoyo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="https://wa.me/59164556725">WhatsApp: +591 64556725</a></li>
+          <li>Antofagasta entre Bolivar y Sucre</li>
+          <li>Oruro, Bolivia</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Siguenos</h3>
+        <div class="redes">
+          <a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://wa.me/59164556725" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com/profile.php?id=61578464102459" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        </div>
+      </div>
+    </div>
+    <div class="pie__abajo">
+      <p><b>OncoMax</b> - Proyecto educativo. La informacion del sitio no reemplaza una consulta medica.</p>
     </div>
   </footer>
 </body>

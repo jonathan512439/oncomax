@@ -1,333 +1,368 @@
 <!DOCTYPE html>
 <!-- Archivo HTML de la pagina Oncologia. -->
 <html lang="es">
-<!-- Idioma español. -->
 <head>
-  <!-- Configuracion basica. -->
   <meta charset="UTF-8">
-  <!-- Tildes y ñ. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Responsivo. -->
+  <meta name="description" content="Informacion educativa sobre oncologia: que es, mitos y realidades, señales de alerta y un cuestionario interactivo.">
   <title>Oncologia | OncoMax</title>
-  <!-- Titulo de pestaña. -->
-  <style>
-    /* Estilo sencillo para esta pagina. */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #FAFAFC;
-      color: #211926;
-      line-height: 1.5;
-    }
-    header {
-      background: white;
-      border-bottom: 1px solid #E6E1EC;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      width: 260px;
-      height: 70px;
-      object-fit: cover;
-      object-position: center;
-    }
-    nav a {
-      display: inline-block;
-      margin: 5px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: #743795;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover,
-    .activo {
-      background: #F3EBF6;
-    }
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 35px 20px;
-    }
-    h1 {
-      color: #743795;
-      font-size: 42px;
-    }
-    .card {
-      background: white;
-      border: 1px solid #E6E1EC;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 15px 0;
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
-    }
-    .aviso {
-      background: #F3EBF6;
-      border-left: 4px solid #743795;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-    .boton {
-      display: inline-block;
-      background: #743795;
-      color: white;
-      text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 10px;
-    }
-    /* menu-interno permite saltar a una parte de esta misma pagina. */
-    .menu-interno a {
-      display: inline-block;
-      margin: 5px;
-      color: #743795;
-      font-weight: bold;
-    }
-    /* mitos coloca dos tarjetas juntas para comparar ideas. */
-    .mitos {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-    /* Cada mito tiene dos lados: la creencia y la explicacion correcta. */
-    .mito {
-      height: 250px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-    /* Esta parte es la que gira y lleva los dos textos juntos. */
-    .mito-contenido {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform .7s;
-      transform-style: preserve-3d;
-    }
-    /* El giro funciona con el mouse y tambien al tocar la tarjeta. */
-    .mito:hover .mito-contenido,
-    .mito:focus .mito-contenido {
-      transform: rotateY(180deg);
-    }
-    /* Los dos lados ocupan el mismo espacio para producir el efecto de vuelta. */
-    .mito-frente,
-    .mito-atras {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 22px;
-      border: 1px solid #E6E1EC;
-      border-radius: 16px;
-      box-sizing: border-box;
-      backface-visibility: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
-    }
-    /* El mito se ve primero con un fondo claro. */
-    .mito-frente {
-      background: white;
-    }
-    /* La realidad esta al otro lado y usa el color suave del proyecto. */
-    .mito-atras {
-      background: #F3EBF6;
-      transform: rotateY(180deg);
-    }
-    /* Esta frase avisa que se puede girar la tarjeta. */
-    .ayuda {
-      color: #743795;
-      font-weight: bold;
-    }
-    /* details permite abrir cada pregunta del mini cuestionario. */
-    details {
-      background: white;
-      border: 1px solid #E6E1EC;
-      border-radius: 10px;
-      margin: 10px 0;
-      padding: 14px;
-    }
-    summary {
-      color: #743795;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    /* pre conserva los espacios de la sopa de letras para formar una cuadricula. */
-    .sopa {
-      overflow: auto;
-      background: #211926;
-      color: white;
-      padding: 18px;
-      font-size: 18px;
-      line-height: 1.8;
-      text-align: center;
-    }
-    footer {
-      text-align: center;
-      background: white;
-      border-top: 1px solid #E6E1EC;
-      padding: 22px;
-      margin-top: 30px;
-      color: #6A6170;
-    }
-    footer b {
-      color: #743795;
-    }
-    .footer-redes img {
-      width: 24px;
-      height: 24px;
-      margin: 6px;
-    }
-    @media(max-width:700px) {
-      .logo {
-        width: 210px;
-      }
-      .mitos {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="icon" href="assets/img/logo-oncomax.png">
+  <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-  <!-- Menu superior. -->
-  <header>
-    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="asistencia.html">Asistencia Medica</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a class="activo" href="oncologia.html">Oncologia</a>
-      <a href="lazos.html">Lazos</a>
-      <a href="reserva.html">Reserva</a>
-    </nav>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <label class="hamburguesa" for="nav-toggle" aria-label="Abrir o cerrar el menu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="asistencia.html">Asistencia</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a class="activo" href="oncologia.html">Oncologia</a>
+        <a href="lazos.html">Lazos</a>
+        <a href="reserva.html">Reserva</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h1>El mundo de la oncologia</h1>
+    <!-- ================= INTRODUCCION ================= -->
+    <section class="seccion seccion--blanca" id="informacion">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Aprender juntos</span>
+          <h1>El mundo de la oncologia</h1>
+          <p>La oncologia es la rama de la medicina encargada de estudiar, prevenir,
+             diagnosticar y tratar enfermedades relacionadas con tumores y cancer.</p>
+        </div>
 
-    <!-- Estos enlaces llevan a secciones de esta misma pagina usando su id. -->
-    <nav class="menu-interno">
-      <a href="#informacion">Información</a>
-      <a href="#mitos">Mitos</a>
-      <a href="#juego">Juego</a>
-    </nav>
-
-    <section class="card" id="informacion">
-      <h2>¿Que es la oncologia?</h2>
-      <p>La oncologia es la rama de la medicina encargada de estudiar, prevenir, diagnosticar y tratar enfermedades relacionadas con tumores y cancer.</p>
+        <!-- Estos enlaces llevan a secciones de esta misma pagina usando su id. -->
+        <div class="acciones revelar">
+          <a class="boton boton--claro" href="#mitos">Mitos y realidades</a>
+          <a class="boton boton--claro" href="#senales">Señales de alerta</a>
+          <a class="boton boton--claro" href="#cuestionario">Cuestionario</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Tarjetas que muestran primero un mito y despues su explicacion. -->
-    <h2 id="mitos">Mitos y realidades</h2>
-    <p class="ayuda">Pasa el mouse o toca una tarjeta para conocer la realidad.</p>
-    <section class="mitos">
-      <!-- Primera tarjeta: se muestra la creencia y detras aparece la aclaracion. -->
-      <article class="mito" tabindex="0">
-        <div class="mito-contenido">
-          <div class="mito-frente">
-            <h3>Mito</h3>
-            <p>El cáncer siempre es hereditario.</p>
-            <p class="ayuda">Ver realidad</p>
-          </div>
-          <div class="mito-atras">
-            <h3>Realidad</h3>
-            <p>Algunos casos tienen relación familiar, pero muchos aparecen por una combinación de distintos factores.</p>
-          </div>
+    <!-- ================= MITOS Y REALIDADES ================= -->
+    <section class="seccion" id="mitos">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Comprobar lo que se dice</span>
+          <h2>Mitos y realidades</h2>
+          <p>Cada tarjeta muestra primero una creencia comun. Al girarla aparece
+             la explicacion correcta.</p>
         </div>
-      </article>
 
-      <!-- Segunda tarjeta: recuerda que cada tratamiento se prepara para una persona. -->
-      <article class="mito" tabindex="0">
-        <div class="mito-contenido">
-          <div class="mito-frente">
-            <h3>Mito</h3>
-            <p>Todos los tratamientos son iguales.</p>
-            <p class="ayuda">Ver realidad</p>
-          </div>
-          <div class="mito-atras">
-            <h3>Realidad</h3>
-            <p>Cada persona recibe una orientación según su diagnóstico, estado de salud y evaluación médica.</p>
-          </div>
-        </div>
-      </article>
+        <section class="grid grid--2 revelar">
+          <!-- Mito 1. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">Mito</span>
+                <h3>El cancer siempre es hereditario.</h3>
+                <span class="pista">Ver realidad</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <span class="etiqueta">Realidad</span>
+                <h3>No siempre</h3>
+                <p>Algunos casos tienen relacion familiar, pero muchos aparecen por una
+                   combinacion de distintos factores.</p>
+              </div>
+            </div>
+          </article>
 
-      <!-- Tercera tarjeta: explica que pueden necesitarse varios estudios. -->
-      <article class="mito" tabindex="0">
-        <div class="mito-contenido">
-          <div class="mito-frente">
-            <h3>Mito</h3>
-            <p>Una sola prueba siempre confirma cualquier cáncer.</p>
-            <p class="ayuda">Ver realidad</p>
-          </div>
-          <div class="mito-atras">
-            <h3>Realidad</h3>
-            <p>El profesional puede necesitar una consulta y diferentes estudios para comprender cada caso.</p>
-          </div>
-        </div>
-      </article>
+          <!-- Mito 2. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">Mito</span>
+                <h3>Todos los tratamientos son iguales.</h3>
+                <span class="pista">Ver realidad</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <span class="etiqueta">Realidad</span>
+                <h3>Cada caso es distinto</h3>
+                <p>Cada persona recibe una orientacion segun su diagnostico, estado de
+                   salud y evaluacion medica.</p>
+              </div>
+            </div>
+          </article>
 
-      <!-- Cuarta tarjeta: enseña que no se debe esperar a sentir dolor. -->
-      <article class="mito" tabindex="0">
-        <div class="mito-contenido">
-          <div class="mito-frente">
-            <h3>Mito</h3>
-            <p>No hace falta consultar si no existe dolor.</p>
-            <p class="ayuda">Ver realidad</p>
-          </div>
-          <div class="mito-atras">
-            <h3>Realidad</h3>
-            <p>Algunos cambios pueden no causar dolor. Los controles y la orientación profesional son importantes.</p>
-          </div>
-        </div>
-      </article>
+          <!-- Mito 3. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">Mito</span>
+                <h3>Una sola prueba siempre confirma cualquier cancer.</h3>
+                <span class="pista">Ver realidad</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <span class="etiqueta">Realidad</span>
+                <h3>Suele hacer falta mas de un estudio</h3>
+                <p>El profesional puede necesitar una consulta y diferentes estudios para
+                   comprender cada caso.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mito 4. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">Mito</span>
+                <h3>No hace falta consultar si no existe dolor.</h3>
+                <span class="pista">Ver realidad</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <span class="etiqueta">Realidad</span>
+                <h3>El dolor no es el unico aviso</h3>
+                <p>Algunos cambios pueden no causar dolor. Los controles y la orientacion
+                   profesional son importantes.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
     </section>
 
-    <!-- Mini cuestionario. La respuesta aparece al abrir cada pregunta. -->
-    <h2>Comprueba lo aprendido</h2>
-    <details><summary>¿La detección temprana puede ayudar?</summary><p>Si. Permite evaluar el caso y buscar atención profesional oportunamente.</p></details>
-    <details><summary>¿Una página web puede dar un diagnóstico?</summary><p>No. El diagnóstico corresponde a profesionales y estudios médicos.</p></details>
-    <details><summary>¿Todos reciben exactamente el mismo tratamiento?</summary><p>No. La atención depende del tipo de enfermedad y de la evaluación de cada persona.</p></details>
-    <details><summary>¿Es bueno preparar preguntas antes de una consulta?</summary><p>Si. Anotar dudas ayuda a aprovechar mejor el tiempo con el profesional.</p></details>
+    <!-- ================= SEÑALES DE ALERTA ================= -->
+    <section class="seccion seccion--suave" id="senales">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Prestar atencion</span>
+          <h2>Cambios que conviene consultar</h2>
+          <p>Ninguno de estos signos significa por si solo una enfermedad grave, pero
+             todos merecen una consulta. Gira cada tarjeta para saber por que.</p>
+        </div>
 
-    <!-- Juego realizado con texto normal. Se deben buscar las palabras indicadas. -->
-    <section class="card" id="juego">
-      <h2>Sopa de letras</h2>
-      <p>Busca: SALUD, APOYO, VIDA y MEDICO.</p>
-      <pre class="sopa">S A L U D R T M
-P C V I D A E E
-A P O Y O N D D
-T R A T A R I I
-C U I D A R C C
-F A M I L I O O</pre>
-      <!-- La solucion queda cerrada para que primero se pueda intentar el juego. -->
-      <details><summary>Ver una pista</summary><p>SALUD está en la primera fila y APOYO está en la tercera.</p></details>
+        <section class="grid grid--4 revelar">
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Bultos nuevos</h3>
+                <p>Un abultamiento que aparece y no desaparece.</p>
+                <span class="pista">Por que</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Bultos nuevos</h3>
+                <p>La mayoria son benignos, pero solo un profesional puede revisarlos
+                   y decidir si hace falta un estudio.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Cansancio persistente</h3>
+                <p>Fatiga que no mejora con el descanso.</p>
+                <span class="pista">Por que</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Cansancio persistente</h3>
+                <p>Puede tener muchas causas. Comentarlo en consulta ayuda a descartar
+                   las mas importantes.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Perdida de peso sin motivo</h3>
+                <p>Bajar de peso sin haber cambiado habitos.</p>
+                <span class="pista">Por que</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Perdida de peso sin motivo</h3>
+                <p>Es un dato util para el profesional, sobre todo si ocurre en pocas
+                   semanas.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Lunares que cambian</h3>
+                <p>Cambios de color, borde o tamaño.</p>
+                <span class="pista">Por que</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Lunares que cambian</h3>
+                <p>La revision de la piel es rapida y sencilla, y permite actuar a tiempo
+                   si algo llama la atencion.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <p class="aviso revelar">Esta pagina es educativa. Ante cualquier duda, la evaluacion la realiza un profesional.</p>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>¿Como se detecta?</h2>
-      <p>Se puede detectar con controles medicos, analisis de sangre, biopsias, radiografias, ecografias, tomografias y otros estudios segun cada caso.</p>
+    <!-- ================= CUESTIONARIO INTERACTIVO =================
+         Esta seccion reemplaza a la sopa de letras. Cada pregunta usa
+         botones de tipo radio y el CSS muestra si la respuesta es
+         correcta o no, sin necesidad de JavaScript. -->
+    <section class="seccion seccion--angosta" id="cuestionario">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Actividad</span>
+          <h2>Comprueba lo aprendido</h2>
+          <p>Elige una respuesta en cada pregunta. La pagina te dice al instante si
+             acertaste y te explica por que.</p>
+        </div>
+
+        <div class="quiz revelar">
+          <!-- Pregunta 1. -->
+          <div class="pregunta">
+            <p class="pregunta__texto">1. ¿Que estudia la oncologia?</p>
+            <input class="op op--mal" type="radio" name="p1" id="p1a">
+            <label for="p1a">Solamente las enfermedades del corazon.</label>
+            <input class="op op--bien" type="radio" name="p1" id="p1b">
+            <label for="p1b">Las enfermedades relacionadas con tumores y cancer.</label>
+            <input class="op op--mal" type="radio" name="p1" id="p1c">
+            <label for="p1c">Unicamente las fracturas de huesos.</label>
+            <p class="fb fb--bien">Correcto. La oncologia estudia, previene, diagnostica y trata estas enfermedades.</p>
+            <p class="fb fb--mal">Todavia no. Vuelve a leer la introduccion de esta pagina.</p>
+          </div>
+
+          <!-- Pregunta 2. -->
+          <div class="pregunta">
+            <p class="pregunta__texto">2. ¿La deteccion temprana puede ayudar?</p>
+            <input class="op op--bien" type="radio" name="p2" id="p2a">
+            <label for="p2a">Si, permite evaluar el caso y buscar atencion oportuna.</label>
+            <input class="op op--mal" type="radio" name="p2" id="p2b">
+            <label for="p2b">No, siempre da lo mismo cuando se consulte.</label>
+            <p class="fb fb--bien">Correcto. Consultar a tiempo amplia las opciones que puede ofrecer el profesional.</p>
+            <p class="fb fb--mal">Revisa la seccion "Cambios que conviene consultar".</p>
+          </div>
+
+          <!-- Pregunta 3. -->
+          <div class="pregunta">
+            <p class="pregunta__texto">3. ¿Una pagina web puede dar un diagnostico?</p>
+            <input class="op op--mal" type="radio" name="p3" id="p3a">
+            <label for="p3a">Si, con leer la informacion es suficiente.</label>
+            <input class="op op--bien" type="radio" name="p3" id="p3b">
+            <label for="p3b">No, el diagnostico corresponde a profesionales y estudios medicos.</label>
+            <p class="fb fb--bien">Correcto. Un sitio web informa, pero no reemplaza una consulta.</p>
+            <p class="fb fb--mal">No es asi: la informacion en linea solo sirve para orientarse.</p>
+          </div>
+
+          <!-- Pregunta 4. -->
+          <div class="pregunta">
+            <p class="pregunta__texto">4. ¿Todos los pacientes reciben exactamente el mismo tratamiento?</p>
+            <input class="op op--mal" type="radio" name="p4" id="p4a">
+            <label for="p4a">Si, existe un unico tratamiento para todos.</label>
+            <input class="op op--bien" type="radio" name="p4" id="p4b">
+            <label for="p4b">No, depende del diagnostico y de la evaluacion de cada persona.</label>
+            <p class="fb fb--bien">Correcto. Por eso cada consulta empieza con una evaluacion individual.</p>
+            <p class="fb fb--mal">Recuerda el mito numero 2 de esta misma pagina.</p>
+          </div>
+
+          <!-- Pregunta 5. -->
+          <div class="pregunta">
+            <p class="pregunta__texto">5. ¿Es util anotar tus dudas antes de una consulta?</p>
+            <input class="op op--bien" type="radio" name="p5" id="p5a">
+            <label for="p5a">Si, ayuda a aprovechar mejor el tiempo con el profesional.</label>
+            <input class="op op--mal" type="radio" name="p5" id="p5b">
+            <label for="p5b">No, es mejor improvisar en el momento.</label>
+            <p class="fb fb--bien">Correcto. Llevar las preguntas escritas evita olvidarlas durante la cita.</p>
+            <p class="fb fb--mal">Anotar las dudas es justamente lo que recomienda el equipo de OncoMax.</p>
+          </div>
+        </div>
+
+        <div class="marcador revelar">
+          <p style="margin:0">¿Te quedaron dudas despues del cuestionario?</p>
+          <a class="boton" href="reserva.html">Solicitar orientacion</a>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>Importancia de la deteccion temprana</h2>
-      <p>La atencion temprana permite orientar al paciente y definir un tratamiento oportuno segun la evaluacion profesional.</p>
-      <a class="boton" href="asistencia.html">Solicitar orientacion</a>
+    <!-- ================= COMO SE DETECTA ================= -->
+    <section class="seccion seccion--blanca">
+      <div class="seccion__interior">
+        <div class="titulo-seccion revelar">
+          <span class="etiqueta">Preguntas frecuentes</span>
+          <h2>Como se detecta y por que consultar a tiempo</h2>
+        </div>
+        <div class="revelar">
+          <details>
+            <summary>¿Como se detecta?</summary>
+            <p>Con controles medicos, analisis de sangre, biopsias, radiografias, ecografias,
+               tomografias y otros estudios segun cada caso.</p>
+          </details>
+          <details>
+            <summary>¿Por que importa la deteccion temprana?</summary>
+            <p>La atencion temprana permite orientar al paciente y definir un tratamiento
+               oportuno segun la evaluacion profesional.</p>
+          </details>
+          <details>
+            <summary>¿Que puedo hacer desde hoy?</summary>
+            <p>Mantener tus controles al dia, avisar cualquier cambio que notes y pedir
+               orientacion cuando tengas dudas.</p>
+          </details>
+        </div>
+
+        <div class="acciones revelar">
+          <a class="boton" href="asistencia.html">Ver especialistas</a>
+          <a class="boton boton--claro" href="lazos.html">Lazos de apoyo</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
-    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
-    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
-    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
-    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
-    <div class="footer-redes">
-      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
-      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
-      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
-      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+  <!-- Enlace fijo de WhatsApp. -->
+  <a class="whatsapp-fijo" href="https://wa.me/59164556725" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+  </a>
+
+  <!-- ================= PIE DE PAGINA ================= -->
+  <footer class="pie">
+    <div class="pie__interior">
+      <div>
+        <img class="pie__logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax">
+        <p>Centro Medico Integral Oncologico. Orientacion, atencion y acompañamiento humano.</p>
+      </div>
+      <div>
+        <h3>Paginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="asistencia.html">Asistencia Medica</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="lazos.html">Lazos de apoyo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="https://wa.me/59164556725">WhatsApp: +591 64556725</a></li>
+          <li>Antofagasta entre Bolivar y Sucre</li>
+          <li>Oruro, Bolivia</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Siguenos</h3>
+        <div class="redes">
+          <a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://wa.me/59164556725" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com/profile.php?id=61578464102459" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        </div>
+      </div>
+    </div>
+    <div class="pie__abajo">
+      <p><b>OncoMax</b> - Proyecto educativo. La informacion del sitio no reemplaza una consulta medica.</p>
     </div>
   </footer>
 </body>

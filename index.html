@@ -8,285 +8,367 @@
   <!-- UTF-8 permite usar tildes y ñ sin problemas. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- viewport hace que el sitio se adapte mejor al celular. -->
+  <meta name="description" content="OncoMax: centro medico integral oncologico en Oruro, Bolivia. Orientacion, asistencia medica y acompañamiento humano.">
+  <!-- description es el resumen que muestran los buscadores. -->
   <title>OncoMax | Inicio</title>
   <!-- title es el texto que aparece en la pestaña del navegador. -->
-  <style>
-    /* Estos son colores basicos del proyecto. Se repiten poco para que sea facil entenderlos. */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #FAFAFC;
-      color: #211926;
-      line-height: 1.5;
-    }
-    /* El body es toda la pagina: quitamos margen, ponemos fuente y color de fondo. */
-    header {
-      background: white;
-      border-bottom: 1px solid #E6E1EC;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    /* El header es la barra de arriba: logo a un lado y menu al otro. */
-    .logo {
-      width: 260px;
-      height: 70px;
-      object-fit: cover;
-      object-position: center;
-    }
-    /* El logo se recorta un poquito para verse grande, porque la imagen original tiene mucho espacio blanco. */
-    nav a {
-      display: inline-block;
-      margin: 5px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: #743795;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    /* Cada enlace del menu parece un boton sencillo. */
-    nav a:hover,
-    .activo {
-      background: #F3EBF6;
-    }
-    /* Esto marca el enlace activo y tambien cuando pasamos el mouse. */
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 35px 20px;
-      text-align: center;
-    }
-    /* main centra el contenido principal y le da aire. */
-    h1 {
-      font-size: 52px;
-      margin: 10px 0;
-      color: #743795;
-    }
-    /* h1 es el titulo mas importante. */
-    h2 {
-      margin: 5px 0;
-      color: #6A6170;
-    }
-    /* h2 se usa como subtitulo. */
-    .frase {
-      font-weight: bold;
-      color: #743795;
-    }
-    /* Clase para resaltar una frase importante. */
-    .video {
-      width: 100%;
-      max-width: 720px;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      margin: 25px 0;
-      background: #211926;
-    }
-    /* El video mantiene formato 16:9, que es el formato normal de muchos videos. */
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 20px;
-      text-align: left;
-    }
-    /* La clase menu acomoda las tarjetas en tres columnas. */
-    .card {
-      background: white;
-      border: 1px solid #E6E1EC;
-      border-radius: 16px;
-      padding: 18px;
-      text-decoration: none;
-      color: #211926;
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
-      transition: transform .3s, box-shadow .3s;
-    }
-    /* Cada tarjeta se levanta un poco para mostrar que se puede seleccionar. */
-    .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 14px 28px rgba(116,55,149,.18);
-    }
-    /* Esta explicacion comienza escondida para mantener la pagina ordenada. */
-    .extra {
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .4s, opacity .4s;
-    }
-    /* La explicacion aparece cuando el mouse esta sobre la tarjeta. */
-    .card:hover .extra {
-      max-height: 90px;
-      opacity: 1;
-    }
-    .card b {
-      color: #743795;
-    }
-    /* El titulo dentro de cada tarjeta va en morado. */
-    .redes img {
-      width: 38px;
-      height: 38px;
-      margin: 12px;
-    }
-    /* Iconos de redes sociales. */
-    footer {
-      background: white;
-      border-top: 1px solid #E6E1EC;
-      text-align: center;
-      padding: 22px;
-      margin-top: 30px;
-      color: #6A6170;
-    }
-    /* Footer es el pie de pagina. */
-    footer b {
-      color: #743795;
-    }
-    /* El nombre del centro en el footer queda un poco mas visible. */
-    .footer-redes img {
-      width: 24px;
-      height: 24px;
-      margin: 6px;
-    }
-    /* details crea una pregunta que se abre al hacer clic, sin usar JavaScript. */
-    details {
-      background: white;
-      border: 1px solid #E6E1EC;
-      border-radius: 10px;
-      margin: 10px auto;
-      padding: 14px;
-      max-width: 720px;
-      text-align: left;
-    }
-    /* summary es la parte visible de cada pregunta. */
-    summary {
-      color: #743795;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    /* Este boton queda fijo abajo para encontrar WhatsApp facilmente. */
-    .whatsapp-fijo {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: #25D366;
-      border-radius: 50%;
-      padding: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
-    }
-    /* La imagen dentro del boton mantiene un tamaño facil de tocar. */
-    .whatsapp-fijo img {
-      width: 34px;
-      height: 34px;
-      display: block;
-    }
-    /* Iconos pequeñitos del footer. */
-    @media(max-width:700px) {
-      .logo {
-        width: 210px;
-      }
-      .menu {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 38px;
-      }
-    }
-    /* En celular todo pasa a una columna para que no se apriete. */
-  </style>
+  <link rel="icon" href="assets/img/logo-oncomax.png">
+  <!-- Este es el iconito de la pestaña. -->
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <!-- Todos los estilos del sitio viven en un solo archivo compartido. -->
 </head>
 <body>
   <!-- body contiene todo lo que si se ve en la pagina. -->
-  <header>
-    <!-- header es el menu superior. -->
-    <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
-    <!-- Esta opcion lleva al inicio cuando se hace clic en el logo. -->
-    <nav>
-      <!-- nav contiene los enlaces del menu. Cada archivo.html te lleva a esa pagina. -->
-      <a class="activo" href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="asistencia.html">Asistencia Medica</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="oncologia.html">Oncologia</a>
-      <a href="lazos.html">Lazos</a>
-      <a href="reserva.html">Reserva</a>
-    </nav>
+
+  <!-- ================= CABECERA ================= -->
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <!-- El logo siempre lleva al inicio. -->
+      <a href="index.html"><img class="logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax"></a>
+
+      <!-- Esta casilla esta escondida y es la que abre el menu en celular. -->
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <!-- El label es el boton de hamburguesa: al tocarlo marca la casilla de arriba. -->
+      <label class="hamburguesa" for="nav-toggle" aria-label="Abrir o cerrar el menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="nav">
+        <!-- Cada archivo .html es una pagina distinta del sitio. -->
+        <a class="activo" href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="asistencia.html">Asistencia</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="oncologia.html">Oncologia</a>
+        <a href="lazos.html">Lazos</a>
+        <a href="reserva.html">Reserva</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- main guarda el contenido principal de esta pagina. -->
-    <p class="frase">Tu lucha es nuestra lucha, cuidamos de ti con el corazon.</p>
-    <!-- Esta es la frase institucional. -->
-    <h1>OncoMax</h1>
-    <!-- Titulo principal del proyecto. -->
-    <h2>Centro Medico Integral Oncologico</h2>
-    <!-- Subtitulo que explica que es OncoMax. -->
-    <p>En OncoMax brindamos orientacion, asistencia medica y acompañamiento humano para pacientes y familias.</p>
-    <!-- Texto corto de presentacion. -->
+    <!-- ================= PORTADA ================= -->
+    <section class="portada">
+      <div class="portada__interior">
+        <div>
+          <span class="etiqueta">Centro medico integral</span>
+          <p class="portada__lema">Tu lucha es nuestra lucha, cuidamos de ti con el corazon.</p>
+          <h1>OncoMax</h1>
+          <p class="portada__subtitulo">Centro Medico Integral Oncologico</p>
+          <p>En OncoMax brindamos orientacion, asistencia medica y acompañamiento humano
+             para pacientes y familias durante todo el proceso de atencion.</p>
+          <!-- Dos accesos rapidos: uno principal y otro secundario. -->
+          <div class="acciones">
+            <a class="boton" href="reserva.html">Reservar una cita</a>
+            <a class="boton boton--claro" href="servicios.html">Ver servicios</a>
+          </div>
+        </div>
 
-    <!-- El video ahora es local, o sea que esta guardado dentro de la carpeta del proyecto. -->
-    <video class="video" controls>
-      <!-- source indica donde esta el archivo del video. Pon tu video con este nombre exacto. -->
-      <source src="assets/videos/video-inicio.mp4" type="video/mp4">
-      <!-- Este texto aparece si el navegador no puede reproducir el video. -->
-      Tu navegador no puede reproducir este video.
-    </video>
-    <section class="menu">
-      <!-- Esta seccion muestra accesos a las demas paginas. -->
-      <!-- Cada texto extra se descubre al pasar el mouse por su tarjeta. -->
-      <a class="card" href="servicios.html"><b>Servicios</b><br>Atencion y acompañamiento integral.<span class="extra"><br>Conoce las áreas de atención disponibles en la clínica.</span></a>
-      <a class="card" href="asistencia.html"><b>Asistencia Medica</b><br>Especialistas y apoyo domiciliario.<span class="extra"><br>Revisa profesionales, horarios y pasos para recibir atención.</span></a>
-      <a class="card" href="nosotros.html"><b>Nosotros</b><br>Equipo de OncoMax.<span class="extra"><br>Descubre la historia y biografía de nuestro personal.</span></a>
-      <a class="card" href="oncologia.html"><b>Oncologia</b><br>Informacion educativa basica.<span class="extra"><br>Aprende con preguntas, mitos y actividades sencillas.</span></a>
-      <a class="card" href="lazos.html"><b>Lazos de apoyo</b><br>Mensajes para pacientes y familias.<span class="extra"><br>Encuentra consejos para acompañar con respeto y cariño.</span></a>
-      <a class="card" href="reserva.html"><b>Reservar cita</b><br>Formulario de reserva.<span class="extra"><br>Elige un servicio, una fecha y deja tus datos de contacto.</span></a>
+        <!-- El video esta guardado dentro del proyecto, en assets/videos. -->
+        <div class="video-marco">
+          <video class="video" controls playsinline poster="assets/img/equipo-oncomax.jpg">
+            <!-- source indica donde esta el archivo del video. -->
+            <source src="assets/videos/video-inicio.mp4" type="video/mp4">
+            <!-- Este texto aparece si el navegador no puede reproducir el video. -->
+            Tu navegador no puede reproducir este video.
+          </video>
+          <p class="video-pie">Conoce OncoMax en un minuto</p>
+        </div>
+      </div>
     </section>
 
-    <div class="redes">
-      <!-- Estos iconos usan archivos SVG guardados en assets/icons. Son los logos de las redes sociales. -->
-      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
-      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
-      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
-    </div>
+    <!-- ================= CIFRAS ================= -->
+    <section class="seccion seccion--suave">
+      <div class="seccion__interior">
+        <div class="cifras revelar">
+          <!-- Cada cifra resume algo del centro medico. -->
+          <div class="cifra"><b>+7</b><span>Años acompañando pacientes</span></div>
+          <div class="cifra"><b>5</b><span>Especialistas y enfermeras</span></div>
+          <div class="cifra"><b>3</b><span>Areas de atencion</span></div>
+          <div class="cifra"><b>100%</b><span>Trato humano y respetuoso</span></div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Esta seccion usa etiquetas details para mostrar y ocultar respuestas. -->
-    <section id="preguntas">
-      <h2>Preguntas frecuentes</h2>
-      <!-- Al hacer clic en la pregunta, el navegador abre la respuesta por si solo. -->
-      <details>
-        <summary>¿Necesito una cita para recibir orientación?</summary>
-        <p>Si, puedes solicitarla desde la página Reserva o comunicarte por WhatsApp.</p>
-      </details>
-      <details>
-        <summary>¿OncoMax atiende a niños?</summary>
-        <p>Si, contamos con información y atención de oncología pediátrica.</p>
-      </details>
-      <details>
-        <summary>¿La información del sitio reemplaza al médico?</summary>
-        <p>No. Esta página es educativa y una evaluación siempre debe realizarla un profesional.</p>
-      </details>
+    <!-- ================= POR QUE ONCOMAX (tarjetas giratorias) ================= -->
+    <section class="seccion">
+      <div class="seccion__interior">
+        <div class="titulo-seccion titulo-seccion--centro revelar">
+          <span class="etiqueta">Nuestra forma de trabajar</span>
+          <h2>Por que elegir OncoMax</h2>
+          <p>Pasa el mouse, toca la tarjeta o llega con la tecla Tab: cada una gira y muestra
+             la explicacion completa por detras.</p>
+        </div>
+
+        <section class="grid grid--3 revelar">
+          <!-- Tarjeta giratoria 1. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Atencion cercana</h3>
+                <p>Explicamos cada paso con palabras claras y sin apuros.</p>
+                <span class="pista">Ver detalle</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Atencion cercana</h3>
+                <p>El paciente recibe informacion comprensible sobre su situacion, puede
+                   preguntar todas las veces que necesite y decide acompañado del profesional.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta giratoria 2. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>Equipo especializado</h3>
+                <p>Oncologia medica, quirurgica y pediatrica en un mismo lugar.</p>
+                <span class="pista">Ver detalle</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Equipo especializado</h3>
+                <p>Doctores y enfermeras trabajan de forma coordinada, asi el paciente no
+                   tiene que repetir su historia en cada consulta.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta giratoria 3. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <h3>La familia tambien cuenta</h3>
+                <p>Acompañamos a quienes cuidan al paciente.</p>
+                <span class="pista">Ver detalle</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>La familia tambien cuenta</h3>
+                <p>Damos orientacion a familiares y amigos para que sepan como ayudar,
+                   como escuchar y como cuidarse ellos mismos.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <!-- ================= MAPA DEL SITIO EN TARJETAS ================= -->
+    <section class="seccion seccion--blanca">
+      <div class="seccion__interior">
+        <div class="titulo-seccion titulo-seccion--centro revelar">
+          <span class="etiqueta">Recorre el sitio</span>
+          <h2>Que puedes encontrar aqui</h2>
+          <p>Cada tarjeta gira y en su parte de atras explica que vas a ver en esa pagina.</p>
+        </div>
+
+        <section class="grid grid--3 revelar">
+          <!-- Acceso a Servicios. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">01</span>
+                <h3>Servicios</h3>
+                <p>Atencion y acompañamiento integral.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Servicios</h3>
+                <p>Conoce las areas de atencion disponibles: oncologia pediatrica,
+                   oncologia quirurgica y acompañamiento integral.</p>
+                <a class="boton" href="servicios.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acceso a Asistencia Medica. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">02</span>
+                <h3>Asistencia Medica</h3>
+                <p>Especialistas y apoyo domiciliario.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Asistencia Medica</h3>
+                <p>Revisa a los profesionales, el calendario de atencion y los tres pasos
+                   para solicitar una consulta.</p>
+                <a class="boton" href="asistencia.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acceso a Nosotros. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">03</span>
+                <h3>Nosotros</h3>
+                <p>El equipo humano de OncoMax.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Nosotros</h3>
+                <p>Descubre la historia de la clinica, la galeria y la biografia de
+                   doctores y enfermeras.</p>
+                <a class="boton" href="nosotros.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acceso a Oncologia. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">04</span>
+                <h3>Oncologia</h3>
+                <p>Informacion educativa basica.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Oncologia</h3>
+                <p>Aprende con mitos y realidades, un cuestionario para autoevaluarte y
+                   señales a las que conviene prestar atencion.</p>
+                <a class="boton" href="oncologia.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acceso a Lazos de apoyo. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">05</span>
+                <h3>Lazos de apoyo</h3>
+                <p>Mensajes para pacientes y familias.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Lazos de apoyo</h3>
+                <p>Encuentra frases de aliento y consejos concretos para acompañar con
+                   respeto y cariño.</p>
+                <a class="boton" href="lazos.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acceso a Reserva. -->
+          <article class="flip flip--texto" tabindex="0">
+            <div class="flip__interior">
+              <div class="flip__cara flip__frente">
+                <span class="etiqueta">06</span>
+                <h3>Reservar cita</h3>
+                <p>Formulario de reserva.</p>
+                <span class="pista">Ver que incluye</span>
+              </div>
+              <div class="flip__cara flip__atras">
+                <h3>Reservar cita</h3>
+                <p>Elige un servicio, una fecha y deja tus datos de contacto. Tambien
+                   encontraras el croquis para llegar.</p>
+                <a class="boton" href="reserva.html">Entrar</a>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <!-- ================= PREGUNTAS FRECUENTES ================= -->
+    <section class="seccion seccion--angosta seccion--suave" id="preguntas">
+      <div class="seccion__interior">
+        <div class="titulo-seccion titulo-seccion--centro revelar">
+          <span class="etiqueta">Dudas comunes</span>
+          <h2>Preguntas frecuentes</h2>
+          <p>Al hacer clic en una pregunta, el navegador abre la respuesta por si solo.</p>
+        </div>
+
+        <div class="revelar">
+          <details>
+            <summary>¿Necesito una cita para recibir orientacion?</summary>
+            <p>Si, puedes solicitarla desde la pagina Reserva o comunicarte por WhatsApp.</p>
+          </details>
+          <details>
+            <summary>¿OncoMax atiende a niños?</summary>
+            <p>Si, contamos con informacion y atencion de oncologia pediatrica.</p>
+          </details>
+          <details>
+            <summary>¿La informacion del sitio reemplaza al medico?</summary>
+            <p>No. Esta pagina es educativa y una evaluacion siempre debe realizarla un profesional.</p>
+          </details>
+          <details>
+            <summary>¿Puedo ir acompañado a la consulta?</summary>
+            <p>Si. Recomendamos venir con una persona de confianza que ayude a anotar las indicaciones.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LLAMADO FINAL Y REDES ================= -->
+    <section class="seccion">
+      <div class="seccion__interior">
+        <div class="titulo-seccion titulo-seccion--centro revelar">
+          <h2>Hablemos cuando lo necesites</h2>
+          <p>Escribenos por WhatsApp o dejanos tus datos y la clinica se comunica contigo.</p>
+          <div class="acciones">
+            <a class="boton" href="reserva.html">Solicitar una cita</a>
+            <a class="boton boton--claro" href="https://wa.me/59164556725" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- Estos iconos usan archivos SVG guardados en assets/icons. -->
+        <div class="redes revelar">
+          <a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://wa.me/59164556725" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com/profile.php?id=61578464102459" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Enlace fijo: abre una conversación de WhatsApp en otra pestaña. -->
-  <a class="whatsapp-fijo" href="https://wa.me/59164556725" target="_blank" aria-label="Abrir WhatsApp">
+  <!-- Enlace fijo: abre una conversacion de WhatsApp en otra pestaña. -->
+  <a class="whatsapp-fijo" href="https://wa.me/59164556725" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
     <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
   </a>
 
-  <footer>
-    <!-- Footer significa pie de pagina; aqui ponemos datos finales y sencillos. INformacion General -->
-    <p><b>OncoMax</b> - Centro Medico Integral Oncologico</p>
-    <!-- Este texto recuerda el nombre del proyecto al final de la pagina. -->
-    <p>WhatsApp: +59164556725 | Direccion: Antofagasta entre Bolívar y Sucre, Oruro, Bolivia</p>
-    <!-- Estos datos son temporales; luego se pueden cambiar por datos reales. -->
-    <div class="footer-redes">
-      <!-- Estos iconos son enlaces de redes sociales, por ahora con # porque faltan los enlaces reales. Los funcionales son de Facebook y WhatsApp-->
-      <a href="#"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
-      <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-      <a href="https://wa.me/59164556725"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
-      <a href="https://www.facebook.com/profile.php?id=61578464102459"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+  <!-- ================= PIE DE PAGINA ================= -->
+  <footer class="pie">
+    <div class="pie__interior">
+      <div>
+        <img class="pie__logo" src="assets/img/logo-oncomax.png" alt="Logo OncoMax">
+        <p>Centro Medico Integral Oncologico. Orientacion, atencion y acompañamiento humano.</p>
+      </div>
+      <div>
+        <h3>Paginas</h3>
+        <ul>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="asistencia.html">Asistencia Medica</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="oncologia.html">Oncologia</a></li>
+          <li><a href="lazos.html">Lazos de apoyo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="https://wa.me/59164556725">WhatsApp: +591 64556725</a></li>
+          <li>Antofagasta entre Bolivar y Sucre</li>
+          <li>Oruro, Bolivia</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Siguenos</h3>
+        <!-- Por ahora TikTok e Instagram usan # porque faltan los enlaces reales. -->
+        <div class="redes">
+          <a href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://wa.me/59164556725" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com/profile.php?id=61578464102459" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        </div>
+      </div>
+    </div>
+    <div class="pie__abajo">
+      <p><b>OncoMax</b> - Proyecto educativo. La informacion del sitio no reemplaza una consulta medica.</p>
     </div>
   </footer>
 </body>

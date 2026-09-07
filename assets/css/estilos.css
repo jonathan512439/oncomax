@@ -1,0 +1,671 @@
+/* ============================================================
+   OncoMax - Hoja de estilos compartida por todas las paginas.
+   Antes cada archivo repetia sus propios estilos. Ahora todo
+   vive aqui, asi el sitio se ve igual en las 7 paginas y se
+   corrige en un solo lugar.
+   Escrito solo con HTML y CSS, sin JavaScript.
+   ============================================================ */
+
+/* ---------- 1. Variables: la paleta y las medidas del proyecto ---------- */
+/* :root guarda valores una sola vez y luego se reutilizan con var(). */
+:root {
+  --morado: #743795;          /* Color principal de OncoMax. */
+  --morado-oscuro: #5A2B75;   /* Version mas oscura para degradados. */
+  --morado-suave: #F3EBF6;    /* Fondo claro de apoyo. */
+  --morado-medio: #E8D8EE;    /* Fondo claro un poco mas fuerte. */
+  --linea: #E6E1EC;           /* Color de los bordes. */
+  --fondo: #FAFAFC;           /* Fondo general de la pagina. */
+  --texto: #211926;           /* Color del texto normal. */
+  --texto-suave: #6A6170;     /* Color de textos secundarios. */
+  --verde: #26734D;           /* Se usa para "disponible". */
+  --rojo: #A33A3A;            /* Se usa para "ocupado". */
+  --blanco: #FFFFFF;
+
+  --radio: 16px;              /* Redondeo de las tarjetas. */
+  --radio-chico: 10px;        /* Redondeo de botones y avisos. */
+  --sombra: 0 8px 20px rgba(33, 25, 38, .06);
+  --sombra-alta: 0 16px 34px rgba(116, 55, 149, .18);
+
+  --ancho: 1120px;            /* Ancho maximo del contenido. */
+  --ancho-texto: 760px;       /* Ancho comodo para leer parrafos. */
+
+  /* Escala de espacios: se usa siempre la misma para que nada quede suelto. */
+  --e1: 8px;
+  --e2: 14px;
+  --e3: 22px;
+  --e4: 34px;
+  --e5: 52px;
+  --e6: 76px;
+}
+
+/* ---------- 2. Reglas generales ---------- */
+* { box-sizing: border-box; }   /* El padding ya no agranda las cajas. */
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+/* Los enlaces internos bajan suave y no quedan tapados por la barra fija. */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; }
+
+/* Titulos: tamaños que se adaptan solos al ancho de la pantalla. */
+h1, h2, h3 { line-height: 1.25; margin: 0 0 var(--e1); }
+h1 { font-size: clamp(32px, 5vw, 50px); color: var(--morado); }
+h2 { font-size: clamp(23px, 3vw, 31px); color: var(--morado); }
+h3 { font-size: clamp(17px, 2vw, 20px); }
+p  { margin: 0 0 var(--e2); }
+
+/* ---------- 3. Cabecera y menu ---------- */
+.cabecera {
+  position: sticky;      /* La barra se queda arriba mientras bajamos. */
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linea);
+}
+
+.cabecera__interior {
+  max-width: var(--ancho);
+  margin: auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e2);
+}
+
+.logo {
+  width: 230px;
+  height: 62px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+/* El logo se recorta un poco porque la imagen original tiene mucho espacio blanco. */
+
+/* La casilla que abre y cierra el menu en celular. Queda invisible pero
+   sigue existiendo, por eso el teclado tambien puede usarla. */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* El boton de tres lineas (hamburguesa). En computadora esta oculto. */
+.hamburguesa {
+  display: none;
+  width: 46px;
+  height: 42px;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-chico);
+  cursor: pointer;
+  padding: 11px 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--blanco);
+}
+.hamburguesa span {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--morado);
+  transition: transform .3s, opacity .3s;
+}
+/* Cuando la casilla esta marcada, las tres lineas forman una X. */
+.nav-toggle:checked ~ .hamburguesa span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle:checked ~ .hamburguesa span:nth-child(2) { opacity: 0; }
+.nav-toggle:checked ~ .hamburguesa span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+/* Un borde morado avisa cuando el boton esta seleccionado con el teclado. */
+.nav-toggle:focus-visible ~ .hamburguesa { outline: 3px solid var(--morado); }
+
+.nav { display: flex; flex-wrap: wrap; gap: 2px; }
+
+.nav a {
+  position: relative;
+  padding: 9px 13px;
+  border-radius: var(--radio-chico);
+  color: var(--morado);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background .25s, color .25s;
+}
+.nav a:hover { background: var(--morado-suave); }
+
+/* La pagina en la que estamos se marca con fondo y una linea inferior. */
+.nav a.activo { background: var(--morado-suave); }
+.nav a.activo::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--morado);
+}
+
+/* ---------- 4. Estructura del contenido ---------- */
+main { display: block; }
+
+/* Cada bloque de contenido usa la misma separacion arriba y abajo.
+   Esto es lo que evita que la pagina parezca un lienzo vacio. */
+.seccion { padding: var(--e5) 20px; }
+.seccion--suave { background: var(--morado-suave); }
+.seccion--blanca { background: var(--blanco); }
+.seccion__interior { max-width: var(--ancho); margin: auto; }
+.seccion--angosta .seccion__interior { max-width: var(--ancho-texto); }
+
+/* Titulo de seccion con su pequeña etiqueta superior. */
+.titulo-seccion { margin-bottom: var(--e4); }
+.titulo-seccion p { color: var(--texto-suave); max-width: 62ch; }
+.titulo-seccion--centro { text-align: center; }
+.titulo-seccion--centro p { margin-left: auto; margin-right: auto; }
+
+.etiqueta {
+  display: inline-block;
+  background: var(--morado-suave);
+  color: var(--morado);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  margin-bottom: var(--e1);
+}
+.seccion--suave .etiqueta { background: var(--blanco); }
+
+/* ---------- 5. Portada (hero) ---------- */
+.portada {
+  background:
+    radial-gradient(900px 420px at 12% -10%, var(--morado-suave), transparent 70%),
+    linear-gradient(180deg, var(--blanco), var(--fondo));
+  border-bottom: 1px solid var(--linea);
+  padding: var(--e5) 20px var(--e6);
+}
+.portada__interior {
+  max-width: var(--ancho);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;  /* Texto a la izquierda, video a la derecha. */
+  gap: var(--e5);
+  align-items: center;
+}
+.portada h1 { margin: var(--e1) 0; }
+.portada__lema { color: var(--texto-suave); font-size: 18px; max-width: 48ch; }
+.portada__subtitulo { color: var(--texto-suave); font-weight: 600; font-size: 19px; margin-bottom: var(--e2); }
+
+/* Grupo de botones. Se usa en la portada y al final de cada seccion. */
+.acciones { display: flex; flex-wrap: wrap; gap: var(--e1); margin-top: var(--e3); }
+/* Cuando la seccion esta centrada, los botones tambien se centran. */
+.acciones--centro,
+.titulo-seccion--centro .acciones { justify-content: center; }
+
+/* ---------- 6. Video vertical (formato TikTok 9:16) ---------- */
+.video-marco {
+  justify-self: center;
+  width: 100%;
+  max-width: 320px;
+  padding: 12px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 28px;
+  box-shadow: var(--sombra-alta);
+}
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;   /* Formato vertical, el mismo que usa TikTok. */
+  object-fit: cover;
+  border-radius: 18px;
+  background: var(--texto);
+}
+.video-pie { text-align: center; color: var(--texto-suave); font-size: 13px; margin: var(--e1) 0 0; }
+
+/* ---------- 7. Cuadriculas ---------- */
+/* auto-fit acomoda solo las columnas segun el ancho disponible. */
+.grid { display: grid; gap: var(--e3); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ---------- 8. Tarjeta simple ---------- */
+.card {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: var(--e3);
+  box-shadow: var(--sombra);
+  transition: transform .3s, box-shadow .3s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); }
+.card img { width: 100%; height: 190px; object-fit: cover; border-radius: 12px; }
+.card b { color: var(--morado); }
+
+/* ---------- 9. Tarjeta giratoria (se usa en TODO el sitio) ----------
+   Este es el componente principal: al pasar el mouse, tocar o llegar con
+   el teclado, la tarjeta gira y muestra su informacion por detras. */
+.flip {
+  perspective: 1200px;   /* Da sensacion de profundidad, como en 3D. */
+  cursor: pointer;
+  outline: none;
+}
+.flip__interior {
+  position: relative;
+  height: 100%;
+  transition: transform .7s cubic-bezier(.2, .7, .3, 1);
+  transform-style: preserve-3d;  /* Mantiene los dos lados en el espacio 3D. */
+}
+/* El giro ocurre con el mouse, con el dedo (tabindex) y con el teclado. */
+.flip:hover .flip__interior,
+.flip:focus .flip__interior,
+.flip:focus-within .flip__interior { transform: rotateY(180deg); }
+
+/* Las dos caras comparten el mismo aspecto de tarjeta. */
+.flip__cara {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: var(--e3);
+  box-shadow: var(--sombra);
+  backface-visibility: hidden;   /* Esconde la cara que esta de espaldas. */
+  -webkit-backface-visibility: hidden;
+}
+/* El frente va en el flujo normal: el es quien define la altura de la tarjeta. */
+.flip__frente { position: relative; height: 100%; }
+/* El reverso se coloca encima, ya girado, y espera su turno. */
+.flip__atras {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  overflow: auto;
+  background: var(--morado-suave);
+  border-color: var(--morado-medio);
+}
+.flip__frente img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: var(--e2); }
+.flip__atras h3, .flip__atras h2 { color: var(--morado-oscuro); }
+.flip__atras p { font-size: 15px; }
+
+/* Aviso de "girar" con una flechita que se mueve. */
+.pista {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--morado);
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: var(--e1);
+}
+.pista::after { content: "\21BB"; font-size: 17px; transition: transform .5s; }
+.flip:hover .pista::after { transform: rotate(180deg); }
+
+/* Un borde morado marca la tarjeta cuando se navega con el teclado. */
+.flip:focus-visible .flip__cara { outline: 3px solid var(--morado); outline-offset: 3px; }
+
+/* Alturas comodas segun el tipo de tarjeta. */
+.flip--persona .flip__frente { min-height: 370px; }
+.flip--servicio .flip__frente { min-height: 400px; }
+.flip--texto .flip__frente { min-height: 230px; }
+
+/* ---------- 10. Botones ---------- */
+.boton {
+  display: inline-block;
+  background: var(--morado);
+  color: var(--blanco);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: var(--radio-chico);
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  font-size: 15px;
+  transition: transform .25s, box-shadow .25s, background .25s;
+}
+.boton:hover { transform: translateY(-3px); box-shadow: var(--sombra-alta); background: var(--morado-oscuro); }
+/* La version clara sirve cuando ya hay un boton morado al lado. */
+.boton--claro { background: var(--blanco); color: var(--morado); border: 2px solid var(--morado); }
+.boton--claro:hover { background: var(--morado-suave); color: var(--morado-oscuro); }
+
+/* ---------- 11. Avisos y datos destacados ---------- */
+.aviso {
+  background: var(--morado-suave);
+  border-left: 4px solid var(--morado);
+  padding: var(--e2) var(--e3);
+  border-radius: var(--radio-chico);
+  margin: var(--e3) 0 0;
+}
+.seccion--suave .aviso { background: var(--blanco); }
+
+/* Banda con cifras del centro medico. */
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--e3);
+  text-align: center;
+}
+.cifra { padding: var(--e2); border-radius: var(--radio); transition: transform .3s, background .3s; }
+.cifra:hover { transform: translateY(-6px); background: var(--blanco); }
+.cifra b { display: block; font-size: 40px; color: var(--morado); line-height: 1.1; }
+.cifra span { color: var(--texto-suave); font-size: 15px; }
+
+/* ---------- 12. Preguntas desplegables ---------- */
+details {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-chico);
+  margin-bottom: var(--e1);
+  padding: var(--e2) var(--e3);
+  transition: border-color .25s, box-shadow .25s;
+}
+details:hover { border-color: var(--morado-medio); }
+details[open] { border-color: var(--morado); box-shadow: var(--sombra); }
+summary {
+  color: var(--morado);
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e2);
+}
+summary::-webkit-details-marker { display: none; }
+/* El signo + se convierte en - cuando la respuesta esta abierta. */
+summary::after { content: "+"; font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+details[open] > *:not(summary) { animation: abrir .35s ease both; }
+@keyframes abrir { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 13. Linea de tiempo ---------- */
+.momento {
+  position: relative;
+  border-left: 3px solid var(--morado-medio);
+  padding: var(--e1) var(--e3);
+  margin: 0;
+  transition: transform .3s, border-color .3s;
+}
+.momento::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 16px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--blanco);
+  border: 3px solid var(--morado);
+  transition: transform .3s;
+}
+.momento:hover { transform: translateX(10px); border-color: var(--morado); }
+.momento:hover::before { transform: scale(1.35); }
+
+/* ---------- 14. Pasos numerados ---------- */
+.paso {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: var(--e3);
+  transition: transform .3s, box-shadow .3s;
+}
+.paso:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); }
+.paso__numero {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--morado);
+  color: var(--blanco);
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: var(--e2);
+}
+
+/* ---------- 15. Galeria ---------- */
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--e2); }
+.galeria figure { margin: 0; overflow: hidden; border-radius: var(--radio); position: relative; }
+.galeria img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform .5s; }
+.galeria figure:hover img { transform: scale(1.07); }
+/* El texto aparece deslizandose desde abajo al pasar el mouse. */
+.galeria figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--e2);
+  color: var(--blanco);
+  font-weight: 600;
+  background: linear-gradient(transparent, rgba(33, 25, 38, .85));
+  transform: translateY(100%);
+  transition: transform .4s;
+}
+.galeria figure:hover figcaption { transform: none; }
+
+/* ---------- 16. Tabla de horarios ---------- */
+.tabla-envoltura { overflow-x: auto; border-radius: var(--radio); border: 1px solid var(--linea); background: var(--blanco); }
+.calendario { width: 100%; border-collapse: collapse; background: var(--blanco); min-width: 460px; }
+.calendario th, .calendario td { border-bottom: 1px solid var(--linea); padding: 13px; text-align: center; }
+.calendario th { background: var(--morado); color: var(--blanco); }
+.calendario tbody tr { transition: background .25s; }
+.calendario tbody tr:hover { background: var(--morado-suave); }
+.disponible { color: var(--verde); font-weight: 700; }
+.ocupado { color: var(--rojo); font-weight: 700; }
+
+/* ---------- 17. Formulario ---------- */
+.formulario, .mapa {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: var(--e4);
+  box-shadow: var(--sombra);
+}
+.campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 var(--e3); }
+.campo-ancho { grid-column: 1 / -1; }
+label { display: block; margin-top: var(--e2); font-weight: 600; }
+input, select, textarea {
+  width: 100%;
+  padding: 11px;
+  margin-top: 5px;
+  border: 1px solid #BEB6C5;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color .25s, box-shadow .25s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--morado);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--morado-suave);
+}
+/* Si el dato escrito no tiene el formato pedido, el borde se pone rojo.
+   Solo se aplica a los campos de texto, para no marcar en rojo una fecha
+   que todavia no se ha elegido. */
+input[type="text"]:not(:placeholder-shown):invalid,
+input[type="tel"]:not(:placeholder-shown):invalid { border-color: var(--rojo); }
+
+/* Croquis de la pagina Reserva: la clinica crece un poco al señalarla. */
+.clinica { transition: transform .3s; }
+.clinica:hover { transform: scale(1.04); }
+fieldset { border: 1px solid var(--linea); border-radius: var(--radio-chico); margin-top: var(--e3); padding: var(--e2) var(--e3) var(--e3); }
+legend { font-weight: 700; color: var(--morado); padding: 0 6px; }
+.opcion { display: inline-flex; align-items: center; gap: 7px; margin-right: var(--e3); }
+.opcion input { width: auto; margin: 0; }
+.ayuda-campo { color: var(--texto-suave); font-size: 13px; margin: 4px 0 0; }
+
+/* ---------- 18. Redes sociales ---------- */
+.redes { display: flex; justify-content: center; gap: var(--e2); flex-wrap: wrap; }
+.redes a {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  transition: transform .3s, box-shadow .3s, background .3s;
+}
+.redes a:hover { transform: translateY(-6px) scale(1.06); box-shadow: var(--sombra-alta); background: var(--morado-suave); }
+.redes img { width: 26px; height: 26px; }
+
+/* ---------- 19. Boton fijo de WhatsApp ---------- */
+.whatsapp-fijo {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  background: #25D366;
+  border-radius: 50%;
+  padding: 13px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+  transition: transform .3s;
+}
+.whatsapp-fijo:hover { transform: scale(1.1); }
+.whatsapp-fijo img { width: 32px; height: 32px; display: block; }
+
+/* ---------- 20. Pie de pagina ---------- */
+.pie { background: var(--blanco); border-top: 1px solid var(--linea); color: var(--texto-suave); }
+.pie__interior {
+  max-width: var(--ancho);
+  margin: auto;
+  padding: var(--e5) 20px var(--e3);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--e4);
+}
+.pie h3 { color: var(--morado); font-size: 17px; }
+.pie a { color: var(--texto-suave); text-decoration: none; }
+.pie a:hover { color: var(--morado); text-decoration: underline; }
+.pie ul { list-style: none; padding: 0; margin: 0; }
+.pie li { margin-bottom: 6px; }
+.pie__logo { width: 200px; height: 54px; object-fit: cover; }
+.pie__abajo {
+  max-width: var(--ancho);
+  margin: auto;
+  padding: var(--e2) 20px var(--e4);
+  border-top: 1px solid var(--linea);
+  text-align: center;
+  font-size: 14px;
+}
+.pie .redes { justify-content: flex-start; }
+.pie .redes a { width: 42px; height: 42px; }
+.pie .redes img { width: 21px; height: 21px; }
+
+/* ---------- 21. Aparicion al desplazar la pagina ----------
+   Estas reglas hacen que cada bloque entre suavemente cuando aparece
+   en la pantalla. Si el navegador no lo soporta, todo se ve normal. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .revelar {
+      animation: revelarEntrada linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 32%;
+    }
+  }
+}
+@keyframes revelarEntrada {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Si la persona pidio menos movimiento, se apagan las animaciones. */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- 22. Cuestionario interactivo ----------
+   Reemplaza a la antigua sopa de letras. Funciona sin JavaScript:
+   cada respuesta es un input de tipo radio escondido y el CSS muestra
+   el mensaje correcto usando el selector :checked. */
+.quiz { display: grid; gap: var(--e3); }
+
+.pregunta {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: var(--e3);
+  box-shadow: var(--sombra);
+}
+.pregunta__texto { font-weight: 700; color: var(--morado-oscuro); margin-bottom: var(--e2); }
+
+/* El circulito del radio queda invisible: quien se ve es su etiqueta. */
+.op { position: absolute; opacity: 0; width: 1px; height: 1px; }
+
+.pregunta label {
+  display: block;
+  margin: 0 0 var(--e1);
+  padding: 11px 15px;
+  border: 2px solid var(--linea);
+  border-radius: var(--radio-chico);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+.pregunta label:hover { background: var(--morado-suave); transform: translateX(4px); }
+
+/* La respuesta acertada se marca en verde y la equivocada en rojo. */
+.op--bien:checked + label { border-color: var(--verde); background: #E9F5EE; }
+.op--mal:checked + label { border-color: var(--rojo); background: #F9ECEC; }
+/* Borde visible cuando se navega con el teclado. */
+.op:focus-visible + label { outline: 3px solid var(--morado); outline-offset: 2px; }
+
+/* Los mensajes empiezan ocultos y aparecen segun la opcion elegida. */
+.fb { display: none; margin: var(--e2) 0 0; padding: 12px 15px; border-radius: var(--radio-chico); font-weight: 600; }
+.fb--bien { background: #E9F5EE; color: var(--verde); border-left: 4px solid var(--verde); }
+.fb--mal { background: #F9ECEC; color: var(--rojo); border-left: 4px solid var(--rojo); }
+.op--bien:checked ~ .fb--bien,
+.op--mal:checked ~ .fb--mal { display: block; animation: abrir .35s ease both; }
+
+/* Barra de progreso decorativa que acompaña al cuestionario. */
+.marcador { display: flex; align-items: center; gap: var(--e2); flex-wrap: wrap; margin-top: var(--e3); }
+
+/* ---------- 23. Pantallas medianas y celulares ---------- */
+@media (max-width: 960px) {
+  .portada__interior { grid-template-columns: 1fr; gap: var(--e4); text-align: center; }
+  .portada__lema, .titulo-seccion p { margin-left: auto; margin-right: auto; }
+  .acciones { justify-content: center; }
+}
+
+@media (max-width: 860px) {
+  /* Aqui el menu se convierte en desplegable con boton de hamburguesa. */
+  .hamburguesa { display: flex; }
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--linea);
+    box-shadow: var(--sombra);
+    /* El menu empieza cerrado: sin altura y sin poder tocarse. */
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height .4s ease, visibility .4s;
+  }
+  /* Al marcar la casilla, el menu se despliega hacia abajo. */
+  .nav-toggle:checked ~ .nav { max-height: 460px; visibility: visible; }
+  .nav a { padding: 14px 22px; border-radius: 0; border-bottom: 1px solid var(--linea); font-size: 16px; }
+  .nav a.activo::after { left: 22px; right: auto; width: 26px; bottom: 8px; }
+  .cabecera__interior { position: relative; flex-wrap: nowrap; }
+  .logo { width: 190px; height: 52px; }
+}
+
+@media (max-width: 620px) {
+  .seccion { padding: var(--e4) 16px; }
+  .portada { padding: var(--e4) 16px var(--e5); }
+  .cifra b { font-size: 33px; }
+  .formulario, .mapa { padding: var(--e3); }
+  .flip--persona .flip__frente,
+  .flip--servicio .flip__frente { min-height: 350px; }
+}
